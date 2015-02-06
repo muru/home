@@ -1,0 +1,21 @@
+[submodule "bundle/diffchar.vim"]
+	path = bundle/diffchar.vim
+	url = https://github.com/vim-scripts/diffchar.vim
+[submodule "bundle/eregex.vim"]
+	path = bundle/eregex.vim
+	url = https://github.com/othree/eregex.vim.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = git@github.com:ervandew/supertab.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "bundle/vim2hs"]
+	path = bundle/vim2hs
+	url = https://github.com/dag/vim2hs
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
