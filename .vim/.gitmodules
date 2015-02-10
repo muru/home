@@ -1,21 +1,32 @@
 [submodule "bundle/diffchar.vim"]
 	path = bundle/diffchar.vim
 	url = https://github.com/vim-scripts/diffchar.vim
+	ignore = all
 [submodule "bundle/eregex.vim"]
 	path = bundle/eregex.vim
 	url = https://github.com/othree/eregex.vim.git
+	ignore = all
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+	ignore = all
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git@github.com:ervandew/supertab.git
+	ignore = all
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+	ignore = all
 [submodule "bundle/vim2hs"]
 	path = bundle/vim2hs
 	url = https://github.com/dag/vim2hs
+	ignore = all
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+	ignore = all
+[submodule "bundle/LaTeX-Box"]
+	path = bundle/LaTeX-Box
+	url = https://github.com/LaTeX-Box-Team/LaTeX-Box.git
+	ignore = all
