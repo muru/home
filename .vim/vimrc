@@ -6,7 +6,6 @@ set bg=dark
 set incsearch
 " This shows what you are typing as a command.  I love this!
 set showcmd
-"
 " Who doesn't like autoindent?
 set autoindent
 
@@ -48,33 +47,39 @@ set undolevels=1000           " 1000 undos
 set updatecount=100           " switch every 100 chars
 set complete=.,w,b,u,U,t,i,d  " do lots of scanning on tab completion
 set ttyfast                   " we have a fast terminal
+set pastetoggle=<F10>
 set title
+set laststatus=2
+
+set t_Co=256
 
 nore ; :
 nore , ;
 map < :tabp<CR>
 map > :tabn<CR>
 command! C let @/=""
-command! Make make!
 cmap w!! w !sudo tee >/dev/null %
-colorscheme elflord
-
-execute pathogen#infect()
-au Bufenter *.hs compiler ghc
-let g:SuperTabDefaultCompletionType="context"
-set omnifunc=syntaxcomplete#Complete
-set foldmethod=syntax
-"let g:SuperTabDefaultCompletionType = \"<C-X><C-O>\"
-set laststatus=2
-set pastetoggle=<F10>
-let g:syntastic_cpp_compiler_options=' -std=c++11'
-autocmd Filetype gitcommit setlocal spell textwidth=72
-let g:syntastic_python_python_exec = '/usr/bin/python3'
-
 vnoremap cy "*y
 vnoremap cp "*p
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
+
+colorscheme elflord
+
+execute pathogen#infect()
+autocmd Bufenter,BufNew *.pro set syntax=prolog
+autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd Bufenter *.hs compiler ghc
+autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
+autocmd BufWritePost *.sh if get(b:, 'is_new', 0) | silent execute '!chomod +x %' | endif
+
+let g:SuperTabDefaultCompletionType="context"
+set omnifunc=syntaxcomplete#Complete
+set foldmethod=syntax
+"let g:SuperTabDefaultCompletionType = \"<C-X><C-O>\"
+let g:syntastic_cpp_compiler_options=' -std=c++11'
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:airline#extensions#tabline#enabled = 1
 
 if has('cscope')
   set cscopetag cscopeverbose
@@ -93,12 +98,14 @@ if has('cscope')
   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 endif
 
-set laststatus=2
-
 if has("gui_running")
   if has("gui_gtk2")
     set guifont=Ubuntu\ Mono\ 12
   endif
+endif
+
+if @% == "" && getcwd() == "/tmp"
+	:silent edit test.sh
 endif
 
 let g:DiffColors=100
