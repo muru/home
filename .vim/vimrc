@@ -71,7 +71,7 @@ autocmd Bufenter,BufNew *.pro set syntax=prolog
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Bufenter *.hs compiler ghc
 autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
-autocmd BufWritePost *.sh if get(b:, 'is_new', 0) | silent execute '!chomod +x %' | endif
+autocmd BufWritePost *.sh if get(b:, 'is_new', 0) | silent execute '!chmod +x %' | endif
 
 let g:SuperTabDefaultCompletionType="context"
 set omnifunc=syntaxcomplete#Complete
