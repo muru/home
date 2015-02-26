@@ -1,7 +1,7 @@
 set nocompatible
 set ruler
 set number
-set bg=dark
+"set bg=dark
 
 set incsearch
 " This shows what you are typing as a command.  I love this!
@@ -51,7 +51,7 @@ set pastetoggle=<F10>
 set title
 set laststatus=2
 
-set t_Co=256
+"set t_Co=256
 
 nore ; :
 nore , ;
@@ -64,7 +64,7 @@ vnoremap cp "*p
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-colorscheme elflord
+colorscheme koehler
 
 execute pathogen#infect()
 autocmd Bufenter,BufNew *.pro set syntax=prolog
