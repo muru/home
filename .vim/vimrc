@@ -109,3 +109,4 @@ if @% == "" && getcwd() == "/tmp"
 endif
 
 let g:DiffColors=100
+
