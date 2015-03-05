@@ -51,12 +51,10 @@ set pastetoggle=<F10>
 set title
 set laststatus=2
 
-"set t_Co=256
-
 nore ; :
 nore , ;
-map < :tabp<CR>
-map > :tabn<CR>
+noremap < :tabp<CR>
+noremap > :tabn<CR>
 command! C let @/=""
 cmap w!! w !sudo tee >/dev/null %
 vnoremap cy "*y
@@ -64,19 +62,20 @@ vnoremap cp "*p
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-colorscheme elflord
+colorscheme murphy
 
 execute pathogen#infect()
 autocmd Bufenter,BufNew *.pro set syntax=prolog
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Bufenter *.hs compiler ghc
+
+" From http://vi.stackexchange.com/questions/258/
 autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
 autocmd BufWritePost *.sh if get(b:, 'is_new', 0) | silent execute '!chmod +x %' | endif
 
 let g:SuperTabDefaultCompletionType="context"
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
-"let g:SuperTabDefaultCompletionType = \"<C-X><C-O>\"
 let g:syntastic_cpp_compiler_options=' -std=c++11'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:airline#extensions#tabline#enabled = 1
@@ -104,9 +103,53 @@ if has("gui_running")
   endif
 endif
 
+" From http://vi.stackexchange.com/questions/239/
 if @% == "" && getcwd() == "/tmp"
 	:silent edit test.sh
 endif
 
 let g:DiffColors=100
+set path+=~/devel/elearning_academy/**
 
+" function LookupFiles ()
+" 	python <<EOF
+" from os.path import *
+" from vim import *
+" current_file = eval ('expand("%")')
+" current_index = str (current.buffer.number)
+" PATHS = ['~', '~/.vim', '/etc']
+" 
+" if current_file != '' and  not isfile (current_file):
+" 	for p in map (expanduser, PATHS):
+" 		f = join (p, current_file)
+" 		if isfile (f):			
+" 			command ('bad ' + f)
+" 			command ('bd ' + current_index)
+" 			command ('bl')
+" 			# command ('silent keepalt file ' + f)
+" 			break
+" EOF
+" endfunction
+" 
+" autocmd BufWinEnter * nested call LookupFiles()
+
+" From http://vi.stackexchange.com/questions/2009/
+function! FindInPath(name)
+    let path=&path
+    " Add any extra directories to the normal search path
+    set path+=~,~/.vim,/etc
+    " If :find finds a file, then wipeout the buffer that was created for the "new" file
+    setlocal bufhidden=wipe
+    exe 'silent! keepalt find '. fnameescape(a:name)
+    " Restore 'path' and 'bufhidden' to their normal values
+    let &path=path
+    set bufhidden<
+endfunction
+autocmd BufNewFile * nested call FindInPath(expand('<afile>'))
+
+"au VimEnter * tab all | tabfirst
+
+" From http://vi.stackexchange.com/questions/2358/
+autocmd FileType * exec("setlocal dictionary+=".$HOME."/.vim/dictionary/".expand('<amatch>'))
+set completeopt=menuone,longest,preview
+set complete+=k
