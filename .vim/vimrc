@@ -49,6 +49,7 @@ set complete=.,w,b,u,U,t,i,d  " do lots of scanning on tab completion
 set ttyfast                   " we have a fast terminal
 set pastetoggle=<F10>
 set title
+set titlelen=20
 set laststatus=2
 
 nore ; :
@@ -62,12 +63,12 @@ vnoremap cp "*p
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-colorscheme murphy
-
 execute pathogen#infect()
 autocmd Bufenter,BufNew *.pro set syntax=prolog
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Bufenter *.hs compiler ghc
+
+colorscheme monokain
 
 " From http://vi.stackexchange.com/questions/258/
 autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
