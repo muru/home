@@ -33,7 +33,6 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
-
 set showmatch
 
 set tags=tags;/
@@ -51,9 +50,10 @@ set pastetoggle=<F10>
 set title
 set titlelen=20
 set laststatus=2
+set textwidth=85
 
-nore ; :
-nore , ;
+noremap ; :
+noremap , ;
 noremap < :tabp<CR>
 noremap > :tabn<CR>
 command! C let @/=""
@@ -62,13 +62,15 @@ vnoremap cy "*y
 vnoremap cp "*p
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
+nnoremap <Down> gj
+nnoremap <Up> gk
 
 execute pathogen#infect()
 autocmd Bufenter,BufNew *.pro set syntax=prolog
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Bufenter *.hs compiler ghc
 
-colorscheme monokain
+colorscheme molokai
 
 " From http://vi.stackexchange.com/questions/258/
 autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
@@ -100,7 +102,7 @@ endif
 
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=Ubuntu\ Mono\ 12
+    set guifont=Ubuntu\ Mono\ 13
   endif
 endif
 
@@ -152,5 +154,5 @@ autocmd BufNewFile * nested call FindInPath(expand('<afile>'))
 
 " From http://vi.stackexchange.com/questions/2358/
 autocmd FileType * exec("setlocal dictionary+=".$HOME."/.vim/dictionary/".expand('<amatch>'))
-set completeopt=menuone,longest,preview
+set completeopt+=menuone,longest,preview
 set complete+=k
