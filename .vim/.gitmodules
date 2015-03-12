@@ -12,7 +12,7 @@
 	ignore = dirty
 [submodule "bundle/supertab"]
 	path = bundle/supertab
-	url = git@github.com:ervandew/supertab.git
+	url = https://github.com/ervandew/supertab.git
 	ignore = dirty
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
@@ -41,3 +41,4 @@
 [submodule "bundle/colorschemes"]
 	path = bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
+	ignore = dirty
