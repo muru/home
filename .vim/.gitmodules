@@ -42,3 +42,6 @@
 	path = bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
 	ignore = dirty
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
