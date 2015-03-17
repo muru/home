@@ -8,9 +8,6 @@ setlocal spell spelllang=en_gb
 
 autocmd CursorHold *.tex w
 
-inoreabbrev <buffer> 00 <bar>00\rangle
-inoreabbrev <buffer> 10 <bar>10\rangle
-inoreabbrev <buffer> 01 <bar>01\rangle
-inoreabbrev <buffer> 11 <bar>11\rangle
+inoreabbrev <buffer> /. <bar>\rangle<esc>bba
 
 highlight ColorColumn ctermbg=grey guibg=grey

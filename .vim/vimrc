@@ -50,7 +50,8 @@ set pastetoggle=<F10>
 set title
 set titlelen=20
 set laststatus=2
-set textwidth=85
+
+let g:tex_flavor = "latex"
 
 noremap ; :
 noremap , ;
@@ -76,10 +77,10 @@ colorscheme molokai
 autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
 autocmd BufWritePost *.sh if get(b:, 'is_new', 0) | silent execute '!chmod +x %' | endif
 
-let g:SuperTabDefaultCompletionType="context"
+let g:SuperTabDefaultCompletionType = "context"
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
-let g:syntastic_cpp_compiler_options=' -std=c++11'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:airline#extensions#tabline#enabled = 1
 
@@ -100,19 +101,12 @@ if has('cscope')
   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 endif
 
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Ubuntu\ Mono\ 13
-  endif
-endif
-
 " From http://vi.stackexchange.com/questions/239/
 if @% == "" && getcwd() == "/tmp"
 	:silent edit test.sh
 endif
 
-let g:DiffColors=100
-set path+=~/devel/elearning_academy/**
+let g:DiffColors = 100
 
 " function LookupFiles ()
 " 	python <<EOF
@@ -156,3 +150,5 @@ autocmd BufNewFile * nested call FindInPath(expand('<afile>'))
 autocmd FileType * exec("setlocal dictionary+=".$HOME."/.vim/dictionary/".expand('<amatch>'))
 set completeopt+=menuone,longest,preview
 set complete+=k
+
+source $HOME/.vim/local/$CONFLOCAL.vim
