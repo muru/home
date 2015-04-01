@@ -157,3 +157,8 @@ set completeopt+=menuone,longest,preview
 set complete+=k
 
 source $HOME/.vim/local/$CONFLOCAL.vim
+
+
+" PP
+noremap <leader>p "+p
+noremap <leader>y "+y
