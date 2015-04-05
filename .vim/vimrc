@@ -62,6 +62,8 @@ command! C let @/=""
 cmap w!! w !sudo tee >/dev/null %
 vnoremap cy "*y
 vnoremap cp "*p
+noremap <leader>p "+p
+noremap <leader>y "+y
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 nnoremap <Down> gj
