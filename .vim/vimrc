@@ -50,6 +50,7 @@ set pastetoggle=<F10>
 set title
 set titlelen=20
 set laststatus=2
+set wildignore+=*.aux,*.toc,*.pdf
 
 let g:tex_flavor = "latex"
 
@@ -120,11 +121,11 @@ let g:DiffColors = 100
 " current_file = eval ('expand("%")')
 " current_index = str (current.buffer.number)
 " PATHS = ['~', '~/.vim', '/etc']
-" 
+"
 " if current_file != '' and  not isfile (current_file):
 " 	for p in map (expanduser, PATHS):
 " 		f = join (p, current_file)
-" 		if isfile (f):			
+" 		if isfile (f):
 " 			command ('bad ' + f)
 " 			command ('bd ' + current_index)
 " 			command ('bl')
@@ -132,7 +133,7 @@ let g:DiffColors = 100
 " 			break
 " EOF
 " endfunction
-" 
+"
 " autocmd BufWinEnter * nested call LookupFiles()
 
 " From http://vi.stackexchange.com/questions/2009/
@@ -156,4 +157,6 @@ autocmd FileType * exec("setlocal dictionary+=".$HOME."/.vim/dictionary/".expand
 set completeopt+=menuone,longest,preview
 set complete+=k
 
-source $HOME/.vim/local/$CONFLOCAL.vim
+if !empty($CONFLOCAL)
+	source $HOME/.vim/local/$CONFLOCAL.vim
+endif
