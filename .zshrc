@@ -11,8 +11,8 @@ compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt appendhistory autocd extendedglob notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
@@ -63,6 +63,8 @@ fi
 autoload -U promptinit
 promptinit
 
+[[ -d $HOME/.cache/zsh ]] || mkdir -p "$HOME/.cache/zsh"
+
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
@@ -93,11 +95,6 @@ alias l='ls --color=auto'
 alias ll='ls --color=auto -Al'
 alias g='grep --color=auto'
 alias h='history | grep'
-
-alias pac='pacaur -S'
-alias pacs='pacaur -Ss'
-alias pacu='pacaur -Syu'
-alias pacr='pacaur -Rs'
 
 autoload -U colors && colors
 if [[ -n $SSH_TTY ]]
@@ -143,9 +140,6 @@ alias help=run-help
 
 setopt completealiases
 
-[[ -f ~/devel/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source ~/devel/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] && source /usr/share/doc/pkgfile/command-not-found.zsh
-[[ -f /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 [[ -d ~/bin ]] && export PATH="$HOME/bin:$PATH"
 
 ssht () {
@@ -164,6 +158,7 @@ function _pip_completion {
 compctl -K _pip_completion pip
 # pip zsh completion end
 
-[[ $COLORTERM = gnome-terminal && ! $TERM = screen-256color ]] && TERM=xterm-256color
-[[ -n $DISPLAY ]] && synclient TapButton1=1 TapButton2=3 TapButton3=2 CircularScrolling=1
+[[ $COLORTERM = gnome-terminal && ! $TERM = screen* ]] && TERM=xterm-256color
 export CDPATH="$CDPATH:$HOME"
+
+[[ -f $HOME/.conflocal/$CONFLOCAL/.zshrc ]] && . "$HOME/.conflocal/$CONFLOCAL/.zshrc"
