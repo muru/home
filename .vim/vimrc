@@ -58,6 +58,8 @@ noremap ; :
 noremap , ;
 noremap < :tabp<CR>
 noremap > :tabn<CR>
+noremap <leader>, :bp<CR>
+noremap <leader>. :bn<CR>
 command! C let @/=""
 cmap w!! w !sudo tee >/dev/null %
 vnoremap cy "*y
@@ -162,3 +164,4 @@ set complete+=k
 if !empty($CONFLOCAL)
 	source $HOME/.vim/local/$CONFLOCAL.vim
 endif
+let g:airline#extensions#tabline#enabled= 0
