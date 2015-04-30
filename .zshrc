@@ -109,7 +109,7 @@ case $TERM in
 	xterm*)
 		if [[ -n $SSH_TTY ]]
 		then
-			precmd () {print -Pn "\e]0;%m: %~\a"}
+			precmd () {print -Pn "\e]0;%m: %2~\a"}
 		else
 			precmd () {print -Pn "\e]0;%2~\a"}
 		fi
@@ -143,7 +143,7 @@ setopt completealiases
 [[ -d ~/bin ]] && export PATH="$HOME/bin:$PATH"
 
 ssht () {
-	ssh -Xt "$@" byobu
+	ssh -Xt "$@" byobu-screen
 }
 
 # pip zsh completion start
