@@ -51,6 +51,7 @@ set title
 set titlelen=20
 set laststatus=2
 set wildignore+=*.aux,*.toc,*.pdf
+set isfname-==
 
 let g:tex_flavor = "latex"
 
@@ -62,8 +63,8 @@ noremap <leader>, :bp<CR>
 noremap <leader>. :bn<CR>
 command! C let @/=""
 cmap w!! w !sudo tee >/dev/null %
-vnoremap cy "*y
-vnoremap cp "*p
+noremap cy "*y
+noremap cp "*p
 noremap <leader>p "+p
 noremap <leader>y "+y
 inoremap <Down> <C-o>gj
@@ -93,6 +94,10 @@ let g:LatexBox_latexmk_async = 1
 let g:LatexBox_latexmk_preview_continuously = 1
 let g:LatexBox_quickfix = 4
 let g:airline#extensions#tabline#enabled= 0
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
 
 if has('cscope')
   set cscopetag cscopeverbose
