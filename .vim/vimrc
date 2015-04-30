@@ -92,7 +92,7 @@ let g:LatexBox_latexmk_options = ' -xelatex '
 let g:LatexBox_latexmk_async = 1
 let g:LatexBox_latexmk_preview_continuously = 1
 let g:LatexBox_quickfix = 4
-
+let g:airline#extensions#tabline#enabled= 0
 
 if has('cscope')
   set cscopetag cscopeverbose
@@ -164,4 +164,3 @@ set complete+=k
 if !empty($CONFLOCAL)
 	source $HOME/.vim/local/$CONFLOCAL.vim
 endif
-let g:airline#extensions#tabline#enabled= 0
