@@ -106,7 +106,7 @@ fi
 RPROMPT="%{$reset_color%}"
 
 case $TERM in
-	xterm*)
+	xterm*|screen*)
 		if [[ -n $SSH_TTY ]]
 		then
 			precmd () {print -Pn "\e]0;%m: %2~\a"}
