@@ -158,7 +158,18 @@ function _pip_completion {
 compctl -K _pip_completion pip
 # pip zsh completion end
 
-[[ $COLORTERM = gnome-terminal && ! $TERM = screen* ]] && TERM=xterm-256color
+if [[ $COLORTERM = gnome-terminal ]]   
+then                                   
+	case $TERM in                      
+		xterm*)                        
+			TERM=xterm-256color        
+			;;                         
+		screen*)                       
+			TERM=screen-256color       
+			;;                         
+	esac 
+fi  
+export TERM
 export CDPATH="$CDPATH:$HOME"
 
 [[ -f $HOME/.conflocal/$CONFLOCAL/.zshrc ]] && . "$HOME/.conflocal/$CONFLOCAL/.zshrc"
