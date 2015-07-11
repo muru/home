@@ -122,6 +122,7 @@ if @% == "" && getcwd() == "/tmp"
 endif
 
 let g:DiffColors = 100
+let g:DiffUnit="Word1"
 
 " function LookupFiles ()
 " 	python <<EOF
