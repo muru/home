@@ -73,7 +73,8 @@ nnoremap <Down> gj
 nnoremap <Up> gk
 
 execute pathogen#infect()
-autocmd Bufenter,BufNew *.pro set syntax=prolog
+autocmd BufNewFile,BufRead *.pro set syntax=prolog
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Bufenter *.hs compiler ghc
 
