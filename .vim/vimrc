@@ -84,6 +84,7 @@ autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endi
 autocmd BufWritePost *.sh if get(b:, 'is_new', 0) | silent execute '!chmod +x %' | endif
 
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabClosePreviewOnPopupClose = 1
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
