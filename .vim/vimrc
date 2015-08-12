@@ -75,6 +75,7 @@ nnoremap <Up> gk
 execute pathogen#infect()
 autocmd BufNewFile,BufRead *.pro set syntax=prolog
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead */debian/rules.d/* set filetype=make
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd Bufenter *.hs compiler ghc
 
