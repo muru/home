@@ -55,6 +55,20 @@ set isfname-==
 
 let g:tex_flavor = "latex"
 
+function! Help2Url (...)
+	exec 'silent! help ' . ( a:0 ? a:1 : '' )
+	if ! a:0
+		exec "normal \<c-T>"
+	endif
+	let l:tagfile = expand ('%:t')
+	let @* = expand ('<cword>')
+	python import urllib
+	let @* = pyeval ('urllib.quote_plus ("' . @* . '")')
+	let @* = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @*)
+endfunction
+
+command! -nargs=? -complete=help H call Help2Url(<f-args>)
+
 noremap ; :
 noremap , ;
 noremap < :tabp<CR>
@@ -127,28 +141,6 @@ let g:DiffUpdate=1
 if empty($MAN_PN) && @% == "" && getcwd() == "/tmp"
 	silent find test.*
 endif
-
-" function LookupFiles ()
-" 	python <<EOF
-" from os.path import *
-" from vim import *
-" current_file = eval ('expand("%")')
-" current_index = str (current.buffer.number)
-" PATHS = ['~', '~/.vim', '/etc']
-"
-" if current_file != '' and  not isfile (current_file):
-" 	for p in map (expanduser, PATHS):
-" 		f = join (p, current_file)
-" 		if isfile (f):
-" 			command ('bad ' + f)
-" 			command ('bd ' + current_index)
-" 			command ('bl')
-" 			# command ('silent keepalt file ' + f)
-" 			break
-" EOF
-" endfunction
-"
-" autocmd BufWinEnter * nested call LookupFiles()
 
 " From http://vi.stackexchange.com/questions/2009/
 function! FindInPath(name)
