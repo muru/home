@@ -64,8 +64,8 @@ autoload -U promptinit
 promptinit
 
 [[ -d $HOME/.cache/zsh ]] || mkdir -p "$HOME/.cache/zsh"
-
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
   dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
   [[ -d $dirstack[1] ]] && cd $dirstack[1]
