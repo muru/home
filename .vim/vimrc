@@ -62,10 +62,10 @@ noremap > :tabn<CR>
 noremap <leader>, :bp<CR>
 noremap <leader>. :bn<CR>
 command! C let @/=""
-cmap w!! w !sudo tee >/dev/null %
-noremap cy "*y
-noremap cp "*p
+cnoremap w!! w !sudo tee >/dev/null %
+noremap <leader>P "*p
 noremap <leader>p "+p
+noremap <leader>Y "*y
 noremap <leader>y "+y
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
@@ -73,17 +73,20 @@ nnoremap <Down> gj
 nnoremap <Up> gk
 
 execute pathogen#infect()
-autocmd Bufenter,BufNew *.pro set syntax=prolog
-autocmd Filetype gitcommit setlocal spell textwidth=72
-autocmd Bufenter *.hs compiler ghc
 
 colorscheme molokai
+
+if !empty($MAN_PN)
+	autocmd StdinReadPost * set ft=man | file $MAN_PN
+endif
 
 " From http://vi.stackexchange.com/questions/258/
 autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
 autocmd BufWritePost *.sh if get(b:, 'is_new', 0) | silent execute '!chmod +x %' | endif
+autocmd FileType help wincmd L
 
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabClosePreviewOnPopupClose = 1
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
@@ -98,30 +101,32 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+let g:DiffColors = 100
+let g:DiffUnit="Word3"
+let g:DiffUpdate=1
 
-if has('cscope')
-  set cscopetag cscopeverbose
-
-  if has('quickfix')
-    set cscopequickfix=s-,c-,d-,i-,t-,e-
-  endif
-
-  cnoreabbrev csa cs add
-  cnoreabbrev csf cs find
-  cnoreabbrev csk cs kill
-  cnoreabbrev csr cs reset
-"  cnoreabbrev css cs show
-  cnoreabbrev csh cs help
-
-  command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
-endif
+" if has('cscope')
+"   set cscopetag cscopeverbose
+" 
+"   if has('quickfix')
+"     set cscopequickfix=s-,c-,d-,i-,t-,e-
+"   endif
+" 
+"   cnoreabbrev csa cs add
+"   cnoreabbrev csf cs find
+"   cnoreabbrev csk cs kill
+"   cnoreabbrev csr cs reset
+" "  cnoreabbrev css cs show
+"   cnoreabbrev csh cs help
+" 
+"   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
+" endif
 
 " From http://vi.stackexchange.com/questions/239/
-if @% == "" && getcwd() == "/tmp"
-	:silent edit test.sh
+" with exception for reading manpages
+if empty($MAN_PN) && @% == "" && getcwd() == "/tmp"
+	silent find test.*
 endif
-
-let g:DiffColors = 100
 
 " function LookupFiles ()
 " 	python <<EOF
@@ -147,6 +152,10 @@ let g:DiffColors = 100
 
 " From http://vi.stackexchange.com/questions/2009/
 function! FindInPath(name)
+	" Force creation of new file for paths beginning with ./
+	"if expand('%') =~ '^\./'
+	"	return 0
+	"endif
     let path=&path
     " Add any extra directories to the normal search path
     set path+=~,~/.vim,/etc
@@ -166,6 +175,4 @@ autocmd FileType * exec("setlocal dictionary+=".$HOME."/.vim/dictionary/".expand
 set completeopt+=menuone,longest,preview
 set complete+=k
 
-if !empty($CONFLOCAL)
-	source $HOME/.vim/local/$CONFLOCAL.vim
-endif
+runtime local/$CONFLOCAL.vim
