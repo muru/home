@@ -171,5 +171,11 @@ then
 fi  
 export TERM
 export CDPATH="$CDPATH:$HOME"
+export MANPAGER='vim -'
+export MANWIDTH=80
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 
 [[ -f $HOME/.conflocal/$CONFLOCAL/.zshrc ]] && . "$HOME/.conflocal/$CONFLOCAL/.zshrc"
