@@ -153,9 +153,9 @@ endif
 " From http://vi.stackexchange.com/questions/2009/
 function! FindInPath(name)
 	" Force creation of new file for paths beginning with ./
-	if a:name =~ './*'
-		return 0
-	endif
+	"if expand('%') =~ '^\./'
+	"	return 0
+	"endif
     let path=&path
     " Add any extra directories to the normal search path
     set path+=~,~/.vim,/etc
