@@ -17,3 +17,5 @@ endfunction
 
 autocmd BufEnter $MAN_PN call PrepManPager()
 nnoremap q :q!<CR>
+nnoremap <Space> <PageDown>
+map <expr> <CR> winnr('$') == 1 ? ':vs<CR><C-]>' : '<C-]>'
