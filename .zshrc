@@ -158,7 +158,7 @@ function _pip_completion {
 compctl -K _pip_completion pip
 # pip zsh completion end
 
-if [[ $COLORTERM = gnome-terminal ]]   
+if [[ -n $COLORTERM ]]   
 then                                   
 	case $TERM in                      
 		xterm*)                        
@@ -178,4 +178,7 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
-[[ -f $HOME/.conflocal/$CONFLOCAL/.zshrc ]] && . "$HOME/.conflocal/$CONFLOCAL/.zshrc"
+[[ -f $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
+	. "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[[ -f $HOME/.conflocal/$CONFLOCAL/.zshrc ]] && 
+	. "$HOME/.conflocal/$CONFLOCAL/.zshrc"
