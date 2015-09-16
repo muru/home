@@ -89,10 +89,9 @@ nnoremap <Up> gk
 execute pathogen#infect()
 
 colorscheme molokai
-
-if !empty($MAN_PN)
-	autocmd StdinReadPost * set ft=man | file $MAN_PN
-endif
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight Visual ctermbg=black
 
 " From http://vi.stackexchange.com/questions/258/
 autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
@@ -103,6 +102,7 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
+set foldlevelstart=99
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:airline#extensions#tabline#enabled = 1
@@ -136,9 +136,11 @@ let g:DiffUpdate=1
 "   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 " endif
 
+if !empty($MAN_PN)
+	autocmd StdinReadPost * set ft=man | file $MAN_PN
+elseif @% == "" && getcwd() == "/tmp"
 " From http://vi.stackexchange.com/questions/239/
 " with exception for reading manpages
-if empty($MAN_PN) && @% == "" && getcwd() == "/tmp"
 	silent find test.*
 endif
 
