@@ -106,10 +106,14 @@ set foldlevelstart=99
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:airline#extensions#tabline#enabled = 1
-let g:LatexBox_latexmk_options = ' -xelatex '
-let g:LatexBox_latexmk_async = 1
-let g:LatexBox_latexmk_preview_continuously = 1
-let g:LatexBox_quickfix = 4
+"let g:LatexBox_latexmk_options = ' -xelatex '
+"let g:LatexBox_latexmk_async = 1
+"let g:LatexBox_latexmk_preview_continuously = 1
+"let g:LatexBox_quickfix = 4
+let g:vimtex_view_general_viewer = 'qpdfview'
+let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
+let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_latexmk_options='-xelatex -synctex=1'
 let g:airline#extensions#tabline#enabled= 0
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],

@@ -48,3 +48,6 @@
 [submodule "bundle/AnsiEsc.vim"]
 	path = bundle/AnsiEsc.vim
 	url = https://github.com/vim-scripts/AnsiEsc.vim
+[submodule "bundle/vimtex"]
+	path = bundle/vimtex
+	url = https://github.com/lervag/vimtex
