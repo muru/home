@@ -1,1 +1,1 @@
-$pdflatex = 'xelatex %O %S'
+$pdflatex = 'xelatex --synctex=1 %O %S'
