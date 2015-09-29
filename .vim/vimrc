@@ -72,8 +72,8 @@ command! -nargs=? -complete=help H call Help2Url(<f-args>)
 
 noremap ; :
 noremap , ;
-noremap < :tabp<CR>
-noremap > :tabn<CR>
+nnoremap < :tabp<CR>
+nnoremap > :tabn<CR>
 noremap <leader>, :bp<CR>
 noremap <leader>. :bn<CR>
 command! C let @/=""
