@@ -52,6 +52,7 @@ set titlelen=20
 set laststatus=2
 set wildignore+=*.aux,*.toc,*.pdf
 set isfname-==
+set display+=lastline
 
 let g:tex_flavor = "latex"
 
@@ -102,7 +103,7 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
-set foldlevelstart=99
+set foldlevelstart=1
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:airline#extensions#tabline#enabled = 1
@@ -112,6 +113,8 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:LatexBox_quickfix = 4
 let g:vimtex_view_general_viewer = 'qpdfview'
 let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
+" In qpdfview, use the following for source editor:
+" gvim --remote-tab-silent +%2 %1
 let g:vimtex_view_general_options_latexmk = '--unique'
 let g:vimtex_latexmk_options='-xelatex -synctex=1'
 let g:airline#extensions#tabline#enabled= 0
