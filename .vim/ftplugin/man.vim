@@ -8,7 +8,7 @@ setlocal nomodifiable
 function! PrepManPager()
 	setlocal modifiable
 	if !empty ($MAN_PN)
-		silent %! col -b
+		silent %! col -b -x
 		file $MAN_PN
 	endif
 	setlocal nomodified
