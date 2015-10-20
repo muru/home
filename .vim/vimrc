@@ -56,8 +56,12 @@ set display+=lastline
 
 let g:tex_flavor = "latex"
 
-function! Help2Url (...)
-	exec 'silent! help ' . ( a:0 ? a:1 : '' )
+function! s:Help2Url (...)
+	if winheight('%') < winwidth('%')
+		exec 'silent! vert bo help ' . ( a:0 ? a:1 : '' )
+	else
+		exec 'silent! help ' . ( a:0 ? a:1 : '' )
+	endif
 	if ! a:0
 		exec "normal \<c-T>"
 	endif
@@ -68,7 +72,7 @@ function! Help2Url (...)
 	let @* = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @*)
 endfunction
 
-command! -nargs=? -complete=help H call Help2Url(<f-args>)
+command! -nargs=? -complete=help H call s:Help2Url (<f-args>)
 
 noremap ; :
 noremap , ;
@@ -97,7 +101,6 @@ highlight Visual ctermbg=black
 " From http://vi.stackexchange.com/questions/258/
 autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
 autocmd BufWritePost *.sh if get(b:, 'is_new', 0) | silent execute '!chmod +x %' | endif
-autocmd FileType help wincmd L
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
@@ -154,9 +157,9 @@ endif
 " From http://vi.stackexchange.com/questions/2009/
 function! FindInPath(name)
 	" Force creation of new file for paths beginning with ./
-	"if expand('%') =~ '^\./'
-	"	return 0
-	"endif
+	if expand('%') =~ '^\./'
+		return 0
+	endif
     let path=&path
     " Add any extra directories to the normal search path
     set path+=~,~/.vim,/etc
