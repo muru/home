@@ -96,7 +96,7 @@ execute pathogen#infect()
 colorscheme molokai
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
-highlight Visual ctermbg=black
+highlight Visual ctermbg=DarkGrey
 
 " From http://vi.stackexchange.com/questions/258/
 autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
@@ -125,6 +125,8 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+let g:ctrlp_max_depth = 40
+let g:ctrlp_max_files = 10000
 let g:DiffColors = 100
 let g:DiffUnit="Word3"
 let g:DiffUpdate=1
