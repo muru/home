@@ -92,7 +92,7 @@ export DEBFULLNAME="Murukesh Mohanan"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias l='ls --color=auto'
-alias ll='ls --color=auto -Al'
+alias ll='ls --color=auto -Ahl'
 alias g='grep --color=auto'
 alias h='history | grep'
 
@@ -128,7 +128,6 @@ bindkey -M viins '^F' history-incremental-pattern-search-forward
 
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5c' forward-word
-bindkey '^[[1;5C' forward-word
 
 # Help from Arch
 
