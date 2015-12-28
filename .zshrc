@@ -138,8 +138,6 @@ autoload run-help-svn
 autoload run-help-svk
 alias help=run-help
 
-setopt completealiases
-
 [[ -d ~/bin ]] && export PATH="$HOME/bin:$PATH"
 
 ssht () {
