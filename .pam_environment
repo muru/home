@@ -1,2 +1,3 @@
 PAPERSIZE=a4
-CONFLOCAL=lab-laptop
+CONFLOCAL=laptop
+GOPATH=/home/bro3886/devel/go

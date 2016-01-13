@@ -171,6 +171,8 @@ export CDPATH="$CDPATH:$HOME"
 export MANPAGER='vim -'
 export MANWIDTH=80
 
+setopt BRACE_CCL
+
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
