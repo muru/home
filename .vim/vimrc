@@ -66,10 +66,17 @@ function! s:Help2Url (...)
 		exec "normal \<c-T>"
 	endif
 	let l:tagfile = expand ('%:t')
-	let @* = expand ('<cword>')
-	python import urllib
-	let @* = pyeval ('urllib.quote_plus ("' . @* . '")')
-	let @* = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @*)
+	if ! empty ($DISPLAY)
+		let @* = expand ('<cword>')
+		python import urllib
+		let @* = pyeval ('urllib.quote_plus ("' . @* . '")')
+		let @* = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @*)
+	else
+		let @a = expand ('<cword>')
+		python import urllib
+		let @a = pyeval ('urllib.quote_plus ("' . @a . '")')
+		let @a = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @a)
+	endif
 endfunction
 
 command! -nargs=? -complete=help H call s:Help2Url (<f-args>)
