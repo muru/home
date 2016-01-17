@@ -67,10 +67,10 @@ function! s:Help2Url (...)
 	endif
 	let l:tagfile = expand ('%:t')
 	if ! empty ($DISPLAY)
-		let @* = expand ('<cword>')
+		let @+ = expand ('<cword>')
 		python import urllib
-		let @* = pyeval ('urllib.quote_plus ("' . @* . '")')
-		let @* = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @*)
+		let @+ = pyeval ('urllib.quote_plus ("' . @* . '")')
+		let @+ = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @*)
 	else
 		let @a = expand ('<cword>')
 		python import urllib

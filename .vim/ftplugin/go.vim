@@ -33,3 +33,6 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+nnoremap <buffer> <leader>r :GoRun<cr>
+nnoremap <buffer> <leader>pc :pc<cr>
