@@ -1,0 +1,15 @@
+*
+!.zshrc
+!.zsh/
+!.zsh/**
+!.vim/
+!.vim/**
+!.conflocal
+!.conflocal/**
+!.bashrc
+!.profile
+!.zprofile
+!.pam_environment
+!.latexmkrc
+!.toprc
+!.gitmodules

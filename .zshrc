@@ -137,8 +137,6 @@ autoload run-help-svn
 autoload run-help-svk
 alias help=run-help
 
-[[ -d ~/bin ]] && export PATH="$HOME/bin:$PATH"
-
 ssht () {
 	ssh -Xt "$@" byobu-screen
 }
