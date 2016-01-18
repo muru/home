@@ -127,7 +127,7 @@ bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
 
 bindkey '^[[1;5D' backward-word
-bindkey '^[[1;5c' forward-word
+bindkey '^[[1;5C' forward-word
 
 # Help from Arch
 
