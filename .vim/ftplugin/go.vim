@@ -36,3 +36,5 @@ let g:tagbar_type_go = {
 
 nnoremap <buffer> <leader>r :GoRun<cr>
 nnoremap <buffer> <leader>pc :pc<cr>
+nnoremap <buffer> <leader>d :GoRun % --debug<cr>
+nnoremap <buffer> <leader>t :GoTest -v -cpu=8<cr>
