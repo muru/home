@@ -1,7 +1,6 @@
 # My vimrc
 
-This repository contains my `.vimrc` and and `.vim` folder. 
-The `.vimrc` file is inside the folder and I usually keep a hard link outside.
+This repository contains my `.vim` folder.  The `vimrc` file is inside the folder.
 
 Of note:
 
