@@ -70,7 +70,6 @@ function! s:Help2Url (...)
 	python import urllib
 	let @+ = pyeval ('urllib.quote_plus ("' . @+ . '")')
 	let @+ = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @+)
-	endif
 endfunction
 
 command! -nargs=? -complete=help H call s:Help2Url (<f-args>)

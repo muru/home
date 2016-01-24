@@ -22,19 +22,24 @@ If you opened a root-owned file but forgot to use `sudo`, use `:w!!` to write.
 - [Pathogen](https://github.com/tpope/vim-pathogen) - for autoloading plugins
 - [supertab](https://github.com/ervandew/supertab) - for completion awesomeness
 - [syntastic](https://github.com/scrooloose/syntastic) - for highlighting the living daylights out of syntax errors
-- [diffchar.vim](https://github.com/vim-scripts/diffchar.vim)
+- [YouCompleteMe](https://github.com/Valloric/YouCompleteMe.git)
 - [vim-airline](https://github.com/bling/vim-airline)
-- [ctrlp.vim](https://github.com/kien/ctrlp.vim)
-- [eregex.vim](https://github.com/othree/eregex.vim) - The regex will rise, moar powerful than ever before!
-- [nerdtree](https://github.com/scrooloose/nerdtree)
-- [vim-surround](https://github.com/tpope/vim-surround)
+- [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim.git)
+- [diffchar.vim](https://github.com/vim-scripts/diffchar.vim)
+- [molokai](https://github.com/tomasr/molokai.git)
+- [nerdtree](https://github.com/scrooloose/nerdtree.git)
+- [tabular](https://github.com/godlygeek/tabular.git)
+- [tagbar](https://github.com/majutsushi/tagbar.git)
+- [vim-fugitive](https://github.com/tpope/vim-fugitive.git)
+- [vim-go](https://github.com/fatih/vim-go.git)
+- [vim-markdown](https://github.com/gabrielelana/vim-markdown)
+- [vim-surround](https://github.com/tpope/vim-surround.git)
+- [vimtex](https://github.com/lervag/vimtex)
 - [vim2hs](https://github.com/dag/vim2hs) - Haskell in all its visual beauty:
 
         symbol :: Eq s => s -> Parser s s
         symbol a x = satisfy (a == ) x
-Becomes:
+ Becomes:
 
         symbol :: Eq s ⇒ s → Parser s s
         symbol a x = satisfy (a ≡ ) x
-
-- [LaTeX-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box)
