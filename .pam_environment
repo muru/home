@@ -1,3 +1,4 @@
 PAPERSIZE=a4
 CONFLOCAL=laptop
 GOPATH=/home/bro3886/devel/go
+PATH DEFAULT=${PATH}:${GOPATH}/bin
