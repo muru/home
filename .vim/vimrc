@@ -14,7 +14,7 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 syntax enable
-set grepprg=grep\ -nH\ $*
+set grepprg=grep\ -nH
 
 " Spaces are better than a tab character
 " set expandtab
@@ -66,16 +66,10 @@ function! s:Help2Url (...)
 		exec "normal \<c-T>"
 	endif
 	let l:tagfile = expand ('%:t')
-	if ! empty ($DISPLAY)
-		let @+ = expand ('<cword>')
-		python import urllib
-		let @+ = pyeval ('urllib.quote_plus ("' . @* . '")')
-		let @+ = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @*)
-	else
-		let @a = expand ('<cword>')
-		python import urllib
-		let @a = pyeval ('urllib.quote_plus ("' . @a . '")')
-		let @a = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @a)
+	let @+ = expand ('<cword>')
+	python import urllib
+	let @+ = pyeval ('urllib.quote_plus ("' . @+ . '")')
+	let @+ = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @+)
 	endif
 endfunction
 
@@ -113,7 +107,7 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
-set foldlevelstart=1
+"set foldlevelstart=1
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:airline#extensions#tabline#enabled = 1
@@ -126,8 +120,8 @@ let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
 " In qpdfview, use the following for source editor:
 " gvim --remote-tab-silent +%2 %1
 let g:vimtex_view_general_options_latexmk = '--unique'
-let g:vimtex_latexmk_options='-xelatex -synctex=1'
-let g:airline#extensions#tabline#enabled= 0
+let g:vimtex_latexmk_options ='-xelatex -synctex=1'
+let g:airline#extensions#tabline#enabled = 0
 let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
@@ -135,8 +129,10 @@ let g:ctrlp_prompt_mappings = {
 let g:ctrlp_max_depth = 40
 let g:ctrlp_max_files = 10000
 let g:DiffColors = 100
-let g:DiffUnit="Word3"
-let g:DiffUpdate=1
+let g:DiffUnit = "Word3"
+let g:DiffUpdate = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 " if has('cscope')
 "   set cscopetag cscopeverbose
@@ -160,24 +156,27 @@ if !empty($MAN_PN)
 elseif @% == "" && getcwd() == "/tmp"
 " From http://vi.stackexchange.com/questions/239/
 " with exception for reading manpages
-	silent find test.*
+	try 
+		silent find test.*
+	catch /^Vim\%((\a\+)\)\=:E345/
+		silent edit test.sh
+	endtry
 endif
 
 " From http://vi.stackexchange.com/questions/2009/
 function! FindInPath(name)
 	" Force creation of new file for paths beginning with ./
-	if expand('%') =~ '^\./'
-		return 0
+	if expand('%') !~ '^[.~]\?/'
+		let path=&path
+		" Add any extra directories to the normal search path
+		set path+=~,~/.vim,/etc
+		" If :find finds a file, then wipeout the buffer that was created for the "new" file
+		setlocal bufhidden=wipe
+		exe 'silent keepalt find! '. fnameescape(expand('<afile>'))
+		" Restore 'path' and 'bufhidden' to their normal values
+		let &path=path
+		set bufhidden<
 	endif
-    let path=&path
-    " Add any extra directories to the normal search path
-    set path+=~,~/.vim,/etc
-    " If :find finds a file, then wipeout the buffer that was created for the "new" file
-    setlocal bufhidden=wipe
-    exe 'silent! keepalt find '. fnameescape(a:name)
-    " Restore 'path' and 'bufhidden' to their normal values
-    let &path=path
-    set bufhidden<
 endfunction
 autocmd BufNewFile * nested call FindInPath(expand('<afile>'))
 
