@@ -166,15 +166,19 @@ endif
 function! FindInPath(name)
 	" Force creation of new file for paths beginning with ./
 	if expand('%') !~ '^[.~]\?/'
-		let path=&path
-		" Add any extra directories to the normal search path
-		set path+=~,~/.vim,/etc
-		" If :find finds a file, then wipeout the buffer that was created for the "new" file
-		setlocal bufhidden=wipe
-		exe 'silent keepalt find! '. fnameescape(expand('<afile>'))
-		" Restore 'path' and 'bufhidden' to their normal values
-		let &path=path
-		set bufhidden<
+		try 
+			let path=&path
+			" Add any extra directories to the normal search path
+			set path+=~,~/.vim,/etc
+			" If :find finds a file, then wipeout the buffer that was created for the "new" file
+			setlocal bufhidden=wipe
+			exe 'silent keepalt find! '. fnameescape(expand('<afile>'))
+			" Restore 'path' and 'bufhidden' to their normal values
+			let &path=path
+			set bufhidden<
+		catch /^Vim\%((\a\+)\)\=:E345/
+			return 0
+		endtry
 	endif
 endfunction
 autocmd BufNewFile * nested call FindInPath(expand('<afile>'))
