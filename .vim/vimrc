@@ -53,6 +53,8 @@ set laststatus=2
 set wildignore+=*.aux,*.toc,*.pdf
 set isfname-==
 set display+=lastline
+set undofile
+set undodir=$HOME/.vim/undo
 
 let g:tex_flavor = "latex"
 
@@ -132,23 +134,6 @@ let g:DiffUnit = "Word3"
 let g:DiffUpdate = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
-
-" if has('cscope')
-"   set cscopetag cscopeverbose
-" 
-"   if has('quickfix')
-"     set cscopequickfix=s-,c-,d-,i-,t-,e-
-"   endif
-" 
-"   cnoreabbrev csa cs add
-"   cnoreabbrev csf cs find
-"   cnoreabbrev csk cs kill
-"   cnoreabbrev csr cs reset
-" "  cnoreabbrev css cs show
-"   cnoreabbrev csh cs help
-" 
-"   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
-" endif
 
 if !empty($MAN_PN)
 	autocmd StdinReadPost * set ft=man | file $MAN_PN
