@@ -133,8 +133,6 @@ bindkey '^[[1;5C' forward-word
 
 autoload -U run-help
 autoload run-help-git
-autoload run-help-svn
-autoload run-help-svk
 alias help=run-help
 
 ssht () {
