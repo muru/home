@@ -53,6 +53,8 @@ set laststatus=2
 set wildignore+=*.aux,*.toc,*.pdf
 set isfname-==
 set display+=lastline
+set undofile
+set undodir=$HOME/.vim/undo
 
 let g:tex_flavor = "latex"
 
@@ -74,33 +76,33 @@ endfunction
 
 command! -nargs=? -complete=help H call s:Help2Url (<f-args>)
 
-noremap ; :
-noremap , ;
-nnoremap < :tabp<CR>
-nnoremap > :tabn<CR>
-noremap <leader>, :bp<CR>
-noremap <leader>. :bn<CR>
-command! C let @/=""
-cnoremap w!! w !sudo tee >/dev/null %
-noremap <leader>P "*p
-noremap <leader>p "+p
-noremap <leader>Y "*y
-noremap <leader>y "+y
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
-nnoremap <Down> gj
-nnoremap <Up> gk
+noremap    ;           :
+noremap    ,           ;
+nnoremap   <           :tabp<CR>
+nnoremap   >           :tabn<CR>
+noremap    <leader>,   :bp<CR>
+noremap    <leader>.   :bn<CR>
+command!   C           let @/=""
+cnoremap   w!!         w !sudo tee >/dev/null %
+noremap    <leader>P   "*p
+noremap    <leader>p   "+p
+noremap    <leader>Y   "*y
+noremap    <leader>y   "+y
+inoremap   <Down>      <C-o>gj
+inoremap   <Up>        <C-o>gk
+nnoremap   <Down>      gj
+nnoremap   <Up>        gk
 
 execute pathogen#infect()
 
 colorscheme molokai
-highlight Normal ctermbg=none
+highlight Normal  ctermbg=none
 highlight NonText ctermbg=none
-highlight Visual ctermbg=DarkGrey
+highlight Visual  ctermbg=DarkGrey
 
 " From http://vi.stackexchange.com/questions/258/
-autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
-autocmd BufWritePost *.sh if get(b:, 'is_new', 0) | silent execute '!chmod +x %' | endif
+autocmd BufWritePre  *.sh,*.py if !filereadable(expand('%')) | let b:is_new = 1 | endif
+autocmd BufWritePost *.sh,*.py if get(b:, 'is_new', 0) | silent execute '!chmod +x %' | endif
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
@@ -133,23 +135,6 @@ let g:DiffUpdate = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 
-" if has('cscope')
-"   set cscopetag cscopeverbose
-" 
-"   if has('quickfix')
-"     set cscopequickfix=s-,c-,d-,i-,t-,e-
-"   endif
-" 
-"   cnoreabbrev csa cs add
-"   cnoreabbrev csf cs find
-"   cnoreabbrev csk cs kill
-"   cnoreabbrev csr cs reset
-" "  cnoreabbrev css cs show
-"   cnoreabbrev csh cs help
-" 
-"   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
-" endif
-
 if !empty($MAN_PN)
 	autocmd StdinReadPost * set ft=man | file $MAN_PN
 elseif @% == "" && getcwd() == "/tmp"
@@ -166,15 +151,19 @@ endif
 function! FindInPath(name)
 	" Force creation of new file for paths beginning with ./
 	if expand('%') !~ '^[.~]\?/'
-		let path=&path
-		" Add any extra directories to the normal search path
-		set path+=~,~/.vim,/etc
-		" If :find finds a file, then wipeout the buffer that was created for the "new" file
-		setlocal bufhidden=wipe
-		exe 'silent keepalt find! '. fnameescape(expand('<afile>'))
-		" Restore 'path' and 'bufhidden' to their normal values
-		let &path=path
-		set bufhidden<
+		try 
+			let path=&path
+			" Add any extra directories to the normal search path
+			set path+=~,~/.vim,/etc
+			" If :find finds a file, then wipeout the buffer that was created for the "new" file
+			setlocal bufhidden=wipe
+			exe 'silent keepalt find! '. fnameescape(expand('<afile>'))
+			" Restore 'path' and 'bufhidden' to their normal values
+			let &path=path
+			set bufhidden<
+		catch /^Vim\%((\a\+)\)\=:E345/
+			return 0
+		endtry
 	endif
 endfunction
 autocmd BufNewFile * nested call FindInPath(expand('<afile>'))
