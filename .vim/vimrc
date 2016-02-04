@@ -76,33 +76,33 @@ endfunction
 
 command! -nargs=? -complete=help H call s:Help2Url (<f-args>)
 
-noremap ; :
-noremap , ;
-nnoremap < :tabp<CR>
-nnoremap > :tabn<CR>
-noremap <leader>, :bp<CR>
-noremap <leader>. :bn<CR>
-command! C let @/=""
-cnoremap w!! w !sudo tee >/dev/null %
-noremap <leader>P "*p
-noremap <leader>p "+p
-noremap <leader>Y "*y
-noremap <leader>y "+y
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
-nnoremap <Down> gj
-nnoremap <Up> gk
+noremap    ;           :
+noremap    ,           ;
+nnoremap   <           :tabp<CR>
+nnoremap   >           :tabn<CR>
+noremap    <leader>,   :bp<CR>
+noremap    <leader>.   :bn<CR>
+command!   C           let @/=""
+cnoremap   w!!         w !sudo tee >/dev/null %
+noremap    <leader>P   "*p
+noremap    <leader>p   "+p
+noremap    <leader>Y   "*y
+noremap    <leader>y   "+y
+inoremap   <Down>      <C-o>gj
+inoremap   <Up>        <C-o>gk
+nnoremap   <Down>      gj
+nnoremap   <Up>        gk
 
 execute pathogen#infect()
 
 colorscheme molokai
-highlight Normal ctermbg=none
+highlight Normal  ctermbg=none
 highlight NonText ctermbg=none
-highlight Visual ctermbg=DarkGrey
+highlight Visual  ctermbg=DarkGrey
 
 " From http://vi.stackexchange.com/questions/258/
-autocmd BufWritePre *.sh if !filereadable(expand('%')) | let b:is_new = 1 | endif
-autocmd BufWritePost *.sh if get(b:, 'is_new', 0) | silent execute '!chmod +x %' | endif
+autocmd BufWritePre  *.sh,*.py if !filereadable(expand('%')) | let b:is_new = 1 | endif
+autocmd BufWritePost *.sh,*.py if get(b:, 'is_new', 0) | silent execute '!chmod +x %' | endif
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
