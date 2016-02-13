@@ -7,7 +7,7 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle :compinstall filename '/home/bro3886/.zshrc'
 
 autoload -Uz compinit
-compinit
+compinit -i
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile

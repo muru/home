@@ -114,9 +114,4 @@ if ! shopt -oq posix; then
 fi
 
 alias ping='ping -c5'
-
-if [[ ! -f '/tmp/runonce' ]]; then
-	touch /tmp/runonce
-#	mount /home/bro3886/devel
-#	mount /home/bro3886/arch
-fi
+shopt -s nullglob extglob
