@@ -93,6 +93,7 @@ inoremap   <Up>        <C-o>gk
 nnoremap   <Down>      gj
 nnoremap   <Up>        gk
 
+let g:loaded_nerd_tree = 1
 execute pathogen#infect()
 
 colorscheme molokai
@@ -108,7 +109,7 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
-"set foldlevelstart=1
+set foldlevelstart=3
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:airline#extensions#tabline#enabled = 1
