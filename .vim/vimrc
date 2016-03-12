@@ -100,15 +100,15 @@ Plug 'vim-scripts/diffchar.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
-Plug 'dag/vim2hs'
+Plug 'dag/vim2hs', {'for': 'hs'} 
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', {'for': 'tex'} 
 Plug 'tomasr/molokai'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabrielelana/vim-markdown', {'for': 'markdown'} 
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', {'for': ['cpp', 'c', 'go', 'sh', 'js']} 
 Plug 'fatih/vim-go', {'for': 'go'}
 
 " YCM command lifted from vim-plug readme
@@ -159,6 +159,7 @@ let g:DiffUnit = "Word3"
 let g:DiffUpdate = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
 
 if !empty($MAN_PN)
 	autocmd StdinReadPost * set ft=man | file $MAN_PN
