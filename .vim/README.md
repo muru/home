@@ -14,11 +14,12 @@ If you opened a root-owned file but forgot to use `sudo`, use `:w!!` to write.
 
         nore ; :
         nore , ;
-
   
 ## [Plugins](bundle)
 
-- [Pathogen](https://github.com/tpope/vim-pathogen) - for autoloading plugins
+Since I use `vim-plug` to handle plugins, a `:PlugInstall` would be appropriate on first run.
+
+- [vim-plug](https://github.com/junegunn/vim-plug) - for managing plugins
 - [supertab](https://github.com/ervandew/supertab) - for completion awesomeness
 - [syntastic](https://github.com/scrooloose/syntastic) - for highlighting the living daylights out of syntax errors
 - [YouCompleteMe](https://github.com/Valloric/YouCompleteMe.git)

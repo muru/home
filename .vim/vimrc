@@ -112,13 +112,20 @@ Plug 'majutsushi/tagbar', {'for': ['cpp', 'c', 'go', 'sh', 'js']}
 Plug 'fatih/vim-go', {'for': 'go'}
 
 " YCM command lifted from vim-plug readme
-Plug 'Valloric/YouCompleteMe', { 'do': 'python2 ./install.py --clang-completer --gocode-completer --tern-completer', 'for': ['cpp', 'c', 'go', 'sh', 'js'] }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python2 ./install.py --clang-completer --gocode-completer --tern-completer', 'for': ['cpp', 'c', 'go', 'sh', 'js', 'vim'] }
 autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 
 Plug 'godlygeek/tabular'
 
 Plug 'vim-scripts/deb.vim'
 call plug#end()
+
+function! EnableYCM()
+	call plug#load('YouCompleteMe')
+	call youcompleteme#Enable()
+endfunction
+
+nnoremap <leader>ycm :call EnableYCM()<cr>
 
 colorscheme molokai
 highlight Normal  ctermbg=none
@@ -160,6 +167,7 @@ let g:DiffUpdate = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_python_binary_path = '/usr/bin/python3'
 
 if !empty($MAN_PN)
 	autocmd StdinReadPost * set ft=man | file $MAN_PN
