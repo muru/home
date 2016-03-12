@@ -93,8 +93,32 @@ inoremap   <Up>        <C-o>gk
 nnoremap   <Down>      gj
 nnoremap   <Up>        gk
 
-let g:loaded_nerd_tree = 1
-execute pathogen#infect()
+"execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-scripts/diffchar.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/syntastic'
+Plug 'dag/vim2hs'
+Plug 'tpope/vim-surround'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'lervag/vimtex'
+Plug 'tomasr/molokai'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'gabrielelana/vim-markdown', {'for': 'markdown'} 
+Plug 'majutsushi/tagbar'
+Plug 'fatih/vim-go', {'for': 'go'}
+
+" YCM command lifted from vim-plug readme
+Plug 'Valloric/YouCompleteMe', { 'do': 'python2 ./install.py --clang-completer --gocode-completer --tern-completer', 'for': ['cpp', 'c', 'go', 'sh', 'js'] }
+autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
+
+Plug 'godlygeek/tabular'
+
+Plug 'vim-scripts/deb.vim'
+call plug#end()
 
 colorscheme molokai
 highlight Normal  ctermbg=none

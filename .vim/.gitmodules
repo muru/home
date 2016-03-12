@@ -1,30 +1,6 @@
-[submodule "bundle/diffchar.vim"]
-	path = bundle/diffchar.vim
-	url = https://github.com/vim-scripts/diffchar.vim
-	ignore = dirty
 [submodule "bundle/eregex.vim"]
 	path = bundle/eregex.vim
 	url = https://github.com/othree/eregex.vim.git
-	ignore = dirty
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-	ignore = dirty
-[submodule "bundle/supertab"]
-	path = bundle/supertab
-	url = https://github.com/ervandew/supertab.git
-	ignore = dirty
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-	ignore = dirty
-[submodule "bundle/vim2hs"]
-	path = bundle/vim2hs
-	url = https://github.com/dag/vim2hs
-	ignore = dirty
-[submodule "bundle/vim-surround"]
-	path = bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
 	ignore = dirty
 [submodule "bundle/LaTeX-Box"]
 	path = bundle/LaTeX-Box
@@ -34,37 +10,6 @@
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim
 	ignore = dirty
-[submodule "bundle/airline"]
-	path = bundle/airline
-	url = https://github.com/bling/vim-airline
-	ignore = dirty
-[submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule "bundle/AnsiEsc.vim"]
 	path = bundle/AnsiEsc.vim
 	url = https://github.com/vim-scripts/AnsiEsc.vim
-[submodule "bundle/vimtex"]
-	path = bundle/vimtex
-	url = https://github.com/lervag/vimtex
-[submodule "bundle/molokai"]
-	path = bundle/molokai
-	url = https://github.com/tomasr/molokai.git
-[submodule "bundle/ctrlp.vim"]
-	path = bundle/ctrlp.vim
-	url = https://github.com/ctrlpvim/ctrlp.vim.git
-[submodule "bundle/vim-markdown"]
-	path = bundle/vim-markdown
-	url = https://github.com/gabrielelana/vim-markdown
-[submodule "bundle/tagbar"]
-	path = bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
-[submodule "bundle/vim-go"]
-	path = bundle/vim-go
-	url = https://github.com/fatih/vim-go.git
-[submodule "bundle/YouCompleteMe"]
-	path = bundle/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule "bundle/tabular"]
-	path = bundle/tabular
-	url = https://github.com/godlygeek/tabular.git
