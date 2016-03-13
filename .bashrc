@@ -115,3 +115,6 @@ fi
 
 alias ping='ping -c5'
 shopt -s nullglob extglob
+
+EC() { echo -e '\e[1;33m'code $?'\e[m\n'; }
+trap EC ERR
