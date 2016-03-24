@@ -118,6 +118,7 @@ autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable(
 Plug 'godlygeek/tabular'
 
 Plug 'vim-scripts/deb.vim'
+Plug 'moon-musick/vim-logrotate'
 call plug#end()
 
 function! EnableYCM()
@@ -143,7 +144,6 @@ set foldmethod=syntax
 set foldlevelstart=3
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
-let g:airline#extensions#tabline#enabled = 1
 "let g:LatexBox_latexmk_options = ' -xelatex '
 "let g:LatexBox_latexmk_async = 1
 "let g:LatexBox_latexmk_preview_continuously = 1

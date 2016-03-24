@@ -1,5 +1,4 @@
 inoremap <buffer> [[ \begin{}<Esc>i
-imap ]] <Plug>LatexCloseCurEnv
 setlocal colorcolumn=+1
 setlocal spell spelllang=en_gb
 
