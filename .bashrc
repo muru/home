@@ -114,7 +114,7 @@ if ! shopt -oq posix; then
 fi
 
 alias ping='ping -c5'
-shopt -s nullglob extglob
+shopt -s extglob
 
 EC() { echo -e '\e[1;33m'code $?'\e[m\n'; }
 trap EC ERR
