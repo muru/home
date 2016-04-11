@@ -69,9 +69,19 @@ function! s:Help2Url (...)
 	endif
 	let l:tagfile = expand ('%:t')
 	let @+ = expand ('<cword>')
-	python import urllib
-	let @+ = pyeval ('urllib.quote_plus ("' . @+ . '")')
-	let @+ = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @+)
+	try
+		python import urllib
+		let @+ = pyeval ('urllib.quote_plus ("' . @+ . '")')
+		let @+ = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @+)
+	catch /^Vim\%((\a\+)\)\=:E887/
+		try
+			if has('python3')
+				python3 import urllib.parse
+				let @+ = py3eval ('urllib.parse.quote ("' . @+ . '")')
+				let @+ = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @+)
+			endif
+		endtry
+	endtry
 endfunction
 
 command! -nargs=? -complete=help H call s:Help2Url (<f-args>)
@@ -108,22 +118,22 @@ function! YCMInstallCmd()
 endfunction
 
 "execute pathogen#infect()
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug 'murukeshm/vim-manpager'
 
 Plug 'vim-scripts/diffchar.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
-Plug 'dag/vim2hs', {'for': 'hs'} 
+Plug 'dag/vim2hs', {'for': 'hs'}
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'lervag/vimtex', {'for': 'tex'} 
+Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'tomasr/molokai'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'gabrielelana/vim-markdown', {'for': 'markdown'} 
-Plug 'majutsushi/tagbar', {'for': ['cpp', 'c', 'go', 'sh', 'js']} 
+Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
+Plug 'majutsushi/tagbar', {'for': ['cpp', 'c', 'go', 'sh', 'js']}
 Plug 'fatih/vim-go', {'for': 'go'}
 
 if executable('cmake')
@@ -134,8 +144,10 @@ endif
 
 Plug 'godlygeek/tabular'
 
-Plug 'vim-scripts/deb.vim'
-Plug 'moon-musick/vim-logrotate'
+if !has('windows')
+	Plug 'vim-scripts/deb.vim'
+	Plug 'moon-musick/vim-logrotate'
+endif
 call plug#end()
 
 function! EnableYCM()
@@ -173,9 +185,9 @@ let g:vimtex_view_general_options_latexmk = '--unique'
 let g:vimtex_latexmk_options ='-xelatex -synctex=1'
 let g:airline#extensions#tabline#enabled = 0
 let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
+			\ 'AcceptSelection("e")': ['<c-t>'],
+			\ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+			\ }
 let g:ctrlp_max_depth = 40
 let g:ctrlp_max_files = 10000
 let g:DiffColors = 100
@@ -187,9 +199,9 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_python_binary_path = '/usr/bin/python3'
 
 if empty($MAN_PN) && @% == "" && getcwd() == "/tmp"
-" From http://vi.stackexchange.com/questions/239/
-" with exception for reading manpages
-	try 
+	" From http://vi.stackexchange.com/questions/239/
+	" with exception for reading manpages
+	try
 		silent find test.*
 	catch /^Vim\%((\a\+)\)\=:E345/
 		silent edit test.sh
@@ -200,7 +212,7 @@ endif
 function! FindInPath(name)
 	" Force creation of new file for paths beginning with ./
 	if expand('%') !~ '^[.~]\?/'
-		try 
+		try
 			let path=&path
 			" Add any extra directories to the normal search path
 			set path+=~,~/.vim,/etc
