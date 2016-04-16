@@ -119,33 +119,41 @@ endfunction
 
 "execute pathogen#infect()
 call plug#begin()
-Plug 'murukeshm/vim-manpager'
-
+" Common plugins
 Plug 'vim-scripts/diffchar.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
-Plug 'dag/vim2hs', {'for': 'hs'}
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'tomasr/molokai'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
 Plug 'majutsushi/tagbar', {'for': ['cpp', 'c', 'go', 'sh', 'js']}
-Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'godlygeek/tabular'
 
 if executable('cmake')
 	" YCM command lifted from vim-plug readme
 	Plug 'Valloric/YouCompleteMe', { 'do': YCMInstallCmd(), 'for': ['cpp', 'c', 'go', 'sh', 'js', 'vim'] }
 	autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 endif
-
-Plug 'godlygeek/tabular'
-
-if !has('windows')
+if executable('go')
+	Plug 'fatih/vim-go', {'for': 'go'}
+endif
+if executable('latex')
+	Plug 'lervag/vimtex', {'for': 'tex'}
+endif
+if executable('ghc')
+	Plug 'dag/vim2hs', {'for': 'hs'}
+endif
+if executable('man')
+	Plug 'murukeshm/vim-manpager'
+endif
+if executable('dpkg')
 	Plug 'vim-scripts/deb.vim'
+endif
+if executable('logrotate')
 	Plug 'moon-musick/vim-logrotate'
 endif
 call plug#end()
