@@ -108,9 +108,9 @@ function! YCMInstallCmd()
 	if executable('c++')
 		let l:ycm_cmd .= ' --clang-completer'
 	endif
-	if executable('go')
-		let l:ycm_cmd .= ' --gocode-completer'
-	endif
+	"if executable('go')
+	"	let l:ycm_cmd .= ' --gocode-completer'
+	"endif
 	if executable('npm')
 		let l:ycm_cmd .= ' --tern-completer'
 	endif
@@ -135,11 +135,14 @@ Plug 'godlygeek/tabular'
 
 if executable('cmake')
 	" YCM command lifted from vim-plug readme
-	Plug 'Valloric/YouCompleteMe', { 'do': YCMInstallCmd(), 'for': ['cpp', 'c', 'go', 'sh', 'js', 'vim'] }
+	Plug 'Valloric/YouCompleteMe', { 'do': YCMInstallCmd(), 'for': ['cpp', 'c', 'sh', 'js', 'vim'] }
 	autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 endif
 if executable('go')
 	Plug 'fatih/vim-go', {'for': 'go'}
+	Plug 'Shougo/neocomplete.vim', {'for': 'go'}
+	Plug 'Shougo/vimproc.vim', {'do': 'make'}
+	Plug 'Shougo/echodoc.vim'
 endif
 if executable('latex')
 	Plug 'lervag/vimtex', {'for': 'tex'}
@@ -176,7 +179,7 @@ autocmd BufWritePost *.sh,*.py if get(b:, 'is_new', 0) | silent execute '!chmod 
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
 set foldlevelstart=3
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
@@ -205,6 +208,11 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 if empty($MAN_PN) && @% == "" && getcwd() == "/tmp"
 	" From http://vi.stackexchange.com/questions/239/

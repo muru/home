@@ -4,6 +4,8 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
+let g:go_auto_type_info = 1
+
 let g:go_fmt_command = "goimports"
 
 let g:tagbar_type_go = {
@@ -38,3 +40,9 @@ nnoremap <buffer> <leader>r :GoRun<cr>
 nnoremap <buffer> <leader>pc :pc<cr>
 nnoremap <buffer> <leader>d :GoRun % --debug<cr>
 nnoremap <buffer> <leader>t :GoTest -v -cpu=8<cr>
+
+set completeopt-=longest
+set completeopt-=preview
+let g:echodoc_enable_at_startup = 1
+"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
