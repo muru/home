@@ -135,7 +135,7 @@ Plug 'godlygeek/tabular'
 
 if executable('cmake')
 	" YCM command lifted from vim-plug readme
-	Plug 'Valloric/YouCompleteMe', { 'do': YCMInstallCmd(), 'for': ['cpp', 'c', 'sh', 'js', 'vim'] }
+	Plug 'Valloric/YouCompleteMe', { 'do': YCMInstallCmd(), 'for': ['cpp', 'c', 'sh', 'js', 'vim', 'tex'] }
 	autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 endif
 if executable('go')
@@ -179,9 +179,8 @@ autocmd BufWritePost *.sh,*.py if get(b:, 'is_new', 0) | silent execute '!chmod 
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
-"set omnifunc=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 set foldmethod=syntax
-set foldlevelstart=3
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 "let g:LatexBox_latexmk_options = ' -xelatex '
@@ -249,7 +248,7 @@ autocmd BufNewFile * nested call FindInPath(expand('<afile>'))
 
 " From http://vi.stackexchange.com/questions/2358/
 autocmd FileType * exec("setlocal dictionary+=".$HOME."/.vim/dictionary/".expand('<amatch>'))
-set completeopt+=menuone,longest,preview
+set completeopt+=menuone,noinsert
 set complete+=k
 
 runtime local/$CONFLOCAL.vim

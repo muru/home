@@ -4,4 +4,4 @@ doc/*
 plugged
 view
 spell/en.utf-8.add.spl
-autoload/plug.vim.olg
+autoload/plug.vim.old
