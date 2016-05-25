@@ -96,6 +96,8 @@ alias ll='ls --color=auto -Ahl'
 alias g='grep --color=auto'
 alias h='history | grep'
 
+alias sz='sudo -i zsh -l'
+
 autoload -U colors && colors
 if [[ -n $SSH_TTY ]]
 then
