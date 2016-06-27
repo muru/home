@@ -194,7 +194,7 @@ let g:ctrlp_prompt_mappings = {
 let g:ctrlp_max_depth = 40
 let g:ctrlp_max_files = 10000
 let g:ctrlp_custom_ignore = {
-			\ 'dir': '\v[\/](plugged|undo|view|\.git)$'
+			\ 'dir': '\v[\/](plugged|undo|view|\.git|_site)$'
 			\ }
 let g:DiffColors = 100
 let g:DiffUnit = "Word3"
