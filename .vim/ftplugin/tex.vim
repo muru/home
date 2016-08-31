@@ -5,7 +5,7 @@ setlocal spell spelllang=en_gb
 autocmd CursorHold <buffer> update
 
 inoremap <buffer> $ $$<left>
-inoremap <buffer> gls \gls{}<left>
+inoremap <buffer> <leader>g \gls{}<left>
 inoremap <buffer> glr \gls{rsa}
 inoremap <buffer> glg \gls{gpg}
 inoremap <buffer> glf \gls{fr}
