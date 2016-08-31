@@ -13,6 +13,7 @@ inoremap <buffer> glf \gls{fr}
 highlight ColorColumn ctermbg=grey guibg=grey
 
 "let g:vimtex_latexmk_options ='-pdflatex="xelatex -shell-escape %O %S " -pdf -dvi- -ps- -synctex=1'
+let g:vimtex_latexmk_options ='-pdf'
 "let g:LatexBox_latexmk_options = ' -xelatex '
 "let g:LatexBox_latexmk_async = 1
 "let g:LatexBox_latexmk_preview_continuously = 1
