@@ -244,7 +244,10 @@ autocmd BufNewFile * nested call FindInPath(expand('<afile>'))
 
 " From http://vi.stackexchange.com/questions/2358/
 autocmd FileType * exec("setlocal dictionary+=".$HOME."/.vim/dictionary/".expand('<amatch>'))
-set completeopt+=menuone,noinsert
+set completeopt+=menuone
+if has('patch-7.4-775')
+	set completeopt+=noinsert
+endif
 set complete+=k
 
 runtime local/$CONFLOCAL.vim
