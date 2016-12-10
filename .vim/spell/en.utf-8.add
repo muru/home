@@ -74,3 +74,6 @@ QEMU
 deduplication
 ciphertext
 ciphertexts
+filesystem
+YJLinux
+Kubernetes
