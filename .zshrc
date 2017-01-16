@@ -153,17 +153,17 @@ function _pip_completion {
 compctl -K _pip_completion pip
 # pip zsh completion end
 
-if [[ -n $COLORTERM ]]   
-then                                   
-	case $TERM in                      
-		xterm*)                        
-			TERM=xterm-256color        
-			;;                         
-		screen*)                       
-			TERM=screen-256color       
-			;;                         
-	esac 
-fi  
+if [[ -n $COLORTERM ]]
+then
+	case $TERM in
+		xterm*)
+			TERM=xterm-256color
+			;;
+		screen*)
+			TERM=screen-256color
+			;;
+	esac
+fi
 export TERM
 export CDPATH="$CDPATH:$HOME"
 export MANPAGER='vim -'
@@ -177,5 +177,5 @@ bindkey -M vicmd v edit-command-line
 
 [[ -f $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
 	. "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-[[ -f $HOME/.conflocal/$CONFLOCAL/.zshrc ]] && 
+[[ -f $HOME/.conflocal/$CONFLOCAL/.zshrc ]] &&
 	. "$HOME/.conflocal/$CONFLOCAL/.zshrc"
