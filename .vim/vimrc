@@ -183,7 +183,8 @@ autocmd BufWritePost *.sh,*.py if get(b:, 'is_new', 0) | silent execute '!chmod 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
 set omnifunc=syntaxcomplete#Complete
-set foldmethod=syntax
+set foldmethod=indent
+set foldlevel=10
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:airline#extensions#tabline#enabled = 0
