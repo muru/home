@@ -8,3 +8,5 @@ alias pacl='pacaur -Ql'
 	source /usr/share/doc/pkgfile/command-not-found.zsh
 [[ -n $DISPLAY && -z $SSH_CONNECTION ]] && 
 	synclient TapButton1=1 TapButton2=3 TapButton3=2 CircularScrolling=1
+
+alias wg='wget --continue'

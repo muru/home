@@ -138,7 +138,7 @@ autoload run-help-git
 alias help=run-help
 
 ssht () {
-	ssh -Xt "$@" byobu-screen
+	ssh -Xt "$@" '$SHELL -lc byobu'
 }
 
 # pip zsh completion start
