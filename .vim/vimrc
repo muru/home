@@ -134,6 +134,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
 Plug 'majutsushi/tagbar', {'for': ['cpp', 'c', 'go', 'sh', 'javascript']}
 Plug 'godlygeek/tabular'
+Plug 'dhruvasagar/vim-table-mode'
 
 if executable('cmake')
 	" YCM command lifted from vim-plug readme
@@ -174,6 +175,8 @@ colorscheme molokai
 highlight Normal  ctermbg=none
 highlight NonText ctermbg=none
 highlight Visual  ctermbg=DarkGrey
+highlight NonText ctermfg=grey
+highlight Comment ctermfg=grey
 set cursorline
 
 " From http://vi.stackexchange.com/questions/258/
