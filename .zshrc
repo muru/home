@@ -50,14 +50,14 @@ key[PageDown]=${terminfo[knp]}
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init () {
-        printf '%s' "${terminfo[smkx]}"
-    }
-    function zle-line-finish () {
-        printf '%s' "${terminfo[rmkx]}"
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
+	function zle-line-init () {
+		printf '%s' "${terminfo[smkx]}"
+	}
+	function zle-line-finish () {
+		printf '%s' "${terminfo[rmkx]}"
+	}
+	zle -N zle-line-init
+	zle -N zle-line-finish
 fi
 
 autoload -U promptinit
@@ -67,11 +67,11 @@ promptinit
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-  [[ -d $dirstack[1] ]] && cd $dirstack[1]
+	dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+	[[ -d $dirstack[1] ]] && cd $dirstack[1]
 fi
 chpwd() {
-  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+	print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
 }
 
 DIRSTACKSIZE=20
@@ -143,12 +143,12 @@ ssht () {
 
 # pip zsh completion start
 function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] ) )
+	local words cword
+	read -Ac words
+	read -cn cword
+	reply=( $( COMP_WORDS="$words[*]" \
+				COMP_CWORD=$(( cword-1 )) \
+				PIP_AUTO_COMPLETE=1 $words[1] ) )
 }
 compctl -K _pip_completion pip
 # pip zsh completion end
@@ -175,7 +175,9 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
-[[ -f $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
-	. "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-[[ -f $HOME/.conflocal/$CONFLOCAL/.zshrc ]] &&
-	. "$HOME/.conflocal/$CONFLOCAL/.zshrc"
+# [[ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
+# 	. ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] &&
+	. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+[[ -f ~/.conflocal/$CONFLOCAL/.zshrc ]] &&
+	. ~/.conflocal/$CONFLOCAL/.zshrc
