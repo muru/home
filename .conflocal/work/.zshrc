@@ -10,3 +10,5 @@ export MANPATH
 
 export BYOBU_PREFIX=/usr/local
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+eval "$(chef shell-init zsh)"

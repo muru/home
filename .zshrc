@@ -118,7 +118,14 @@ case $TERM in
 		;;
 esac
 
-setopt appendhistory histignorespace histignorealldups histnostore histreduceblanks histsavenodups incappendhistorytime
+setopt appendhistory histignorespace histignorealldups histnostore histreduceblanks histsavenodups
+autoload is-at-least
+if is-at-least $ZSH_VERSION 5.3.0
+then
+	setopt incappendhistorytime
+else
+	setopt incappendhistory
+fi
 
 # Search backwards and forwards with a pattern
 bindkey -M vicmd '/' history-incremental-pattern-search-backward
