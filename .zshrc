@@ -120,7 +120,7 @@ esac
 
 setopt appendhistory histignorespace histignorealldups histnostore histreduceblanks histsavenodups
 autoload is-at-least
-if is-at-least $ZSH_VERSION 5.3.0
+if is-at-least 5.3.0 $ZSH_VERSION
 then
 	setopt incappendhistorytime
 else
