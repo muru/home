@@ -11,8 +11,8 @@ compinit -i
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt appendhistory autocd extendedglob notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
@@ -68,7 +68,7 @@ DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
 	dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-	[[ -d $dirstack[1] ]] && cd $dirstack[1]
+	[[ -z $ITERM_SESSION ]] && [[ -d $dirstack[1] ]] && cd $dirstack[1]
 fi
 chpwd() {
 	print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
@@ -83,9 +83,6 @@ setopt pushdignoredups
 
 ## This reverts the +/- operators.
 setopt pushdminus
-
-export DEBEMAIL="murukesh@cse.iitb.ac.in"
-export DEBFULLNAME="Murukesh Mohanan"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -145,7 +142,7 @@ autoload run-help-git
 alias help=run-help
 
 ssht () {
-	ssh -Xt "$@" '$SHELL -lc byobu'
+	ssh -Xt "$@" '$SHELL -lic byobu'
 }
 
 # pip zsh completion start
