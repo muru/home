@@ -129,8 +129,8 @@ bindkey -M vicmd '/' history-incremental-pattern-search-backward
 bindkey -M vicmd '?' history-incremental-pattern-search-forward
 
 # set up for insert mode too
-bindkey -M viins '^R' history-incremental-pattern-search-backward
-bindkey -M viins '^F' history-incremental-pattern-search-forward
+bindkey -M viins '^R' history-incremental-search-backward
+bindkey -M viins '^F' history-incremental-search-forward
 
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
