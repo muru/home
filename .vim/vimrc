@@ -144,9 +144,8 @@ if executable('cmake')
 endif
 if executable('go')
 	Plug 'fatih/vim-go', {'for': 'go'}
-	"Plug 'Shougo/neocomplete.vim', {'for': 'go'}
-	"Plug 'Shougo/vimproc.vim', {'do': 'make'}
-	"Plug 'Shougo/echodoc.vim'
+	Plug 'Shougo/neocomplete.vim', {'for': 'go'}
+	Plug 'Shougo/echodoc.vim'
 endif
 if executable('latex')
 	Plug 'lervag/vimtex', {'for': 'tex'}
