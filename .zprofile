@@ -32,4 +32,5 @@ pathmunge() {
 
 [[ -n $GOPATH ]] && pathmunge "$GOPATH/bin"
 [[ -d $HOME/bin ]] && pathmunge $HOME/bin
+[[ -d $HOME/.local/bin ]] && pathmunge $HOME/.local/bin
 export EDITOR=vim
