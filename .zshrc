@@ -179,6 +179,19 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
+if [[ $TERM = screen* ]]
+then
+	# If running in screen, set the window title to the command about to be executed
+	preexec() {
+		[ -n "$WINDOW" ] && print -Pn "\ek$2\e\\"
+	}
+
+	# If in screen, blank the window title when displaying the prompt
+	precmd() {
+		[ -n "$WINDOW" ] && print -Pn "\ek-\e\\"
+	}
+fi
+
 # [[ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
 # 	. ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] &&
