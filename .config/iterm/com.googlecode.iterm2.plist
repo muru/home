@@ -171,7 +171,7 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>269 107 796 473 0 0 1680 1028 </string>
+	<string>269 68 796 473 0 0 1680 1028 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>4 512 1676 516 0 0 1680 1028 </string>
 	<key>New Bookmarks</key>
@@ -782,7 +782,7 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
-			<false/>
+			<true/>
 			<key>Space</key>
 			<integer>-1</integer>
 			<key>Sync Title</key>
@@ -869,7 +869,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-06-19T07:06:30Z</date>
+	<date>2017-08-02T05:54:06Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
