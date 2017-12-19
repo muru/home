@@ -94,6 +94,7 @@ alias g='grep --color=auto'
 alias h='history | grep'
 
 alias sz='sudo -i zsh -l'
+alias wg='wget --continue'
 
 autoload -U colors && colors
 if [[ -n $SSH_TTY ]]
@@ -170,7 +171,7 @@ then
 fi
 export TERM
 export CDPATH="$CDPATH:$HOME"
-export MANPAGER='vim -'
+export MANPAGER='vim --not-a-term -'
 export MANWIDTH=80
 
 setopt BRACE_CCL
