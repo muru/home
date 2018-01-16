@@ -122,7 +122,7 @@ endfunction
 "execute pathogen#infect()
 call plug#begin()
 " Common plugins
-Plug 'vim-scripts/diffchar.vim'
+"Plug 'vim-scripts/diffchar.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
@@ -136,10 +136,12 @@ Plug 'majutsushi/tagbar', {'for': ['cpp', 'c', 'go', 'sh', 'javascript']}
 Plug 'godlygeek/tabular'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-liquid', {'for': ['html', 'markdown']}
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'tpope/vim-obsession'
 
 if executable('cmake')
 	" YCM command lifted from vim-plug readme
-	Plug 'Valloric/YouCompleteMe', { 'do': YCMInstallCmd(), 'for': ['cpp', 'c', 'sh', 'javascript', 'vim', 'tex', 'go'] }
+	Plug 'Valloric/YouCompleteMe', { 'do': YCMInstallCmd(), 'for': ['cpp', 'c', 'sh', 'javascript', 'vim', 'tex', 'go', 'python'] }
 	autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 endif
 if executable('go')
@@ -188,8 +190,12 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 set omnifunc=syntaxcomplete#Complete
 set foldmethod=indent
 set foldlevel=10
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_cpp_compiler_options = ' -std=c++14'
 let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = ['--ignore', 'E501']
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 1
 let g:airline#extensions#tabline#enabled = 0
 let g:ctrlp_prompt_mappings = {
 			\ 'AcceptSelection("e")': ['<c-t>'],
