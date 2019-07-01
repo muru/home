@@ -4,7 +4,7 @@ zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' matcher-list '' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle ':completion:*' squeeze-slashes true
-zstyle :compinstall filename '/home/bro3886/.zshrc'
+zstyle :compinstall filename '/Users/muru/.zshrc'
 
 autoload -Uz compinit
 compinit -i
@@ -195,6 +195,8 @@ fi
 
 # [[ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
 # 	. ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f ~/.zshrc.grml ]] &&
+	. ~/.zshrc.grml
 [[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] &&
 	. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 [[ -f ~/.conflocal/$CONFLOCAL/.zshrc ]] &&
