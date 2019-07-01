@@ -2,7 +2,7 @@ bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 
 #eval "$(chef shell-init zsh)"
-pathmunge /usr/local/opt/*/libexec/gnubin ~/Library/Python/*/bin(N) /usr/local/opt/go/libexec/bin ${GOPATH:-~/go}/bin /usr/local/opt/m4/bin 
+pathmunge /usr/local/opt/*/libexec/gnubin ~/Library/Python/*/bin(N) /usr/local/opt/go/libexec/bin ${GOPATH:-~/go}/bin /usr/local/opt/m4/bin /Library/TeX/texbin
 
 for i in /usr/local/opt/*/libexec/gnuman
 do

@@ -201,3 +201,4 @@ fi
 	. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 [[ -f ~/.conflocal/$CONFLOCAL/.zshrc ]] &&
 	. ~/.conflocal/$CONFLOCAL/.zshrc
+bindkey -v
