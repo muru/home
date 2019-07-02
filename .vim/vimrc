@@ -75,7 +75,7 @@ function! s:Help2Url (...)
 		python import urllib
 		let @+ = pyeval ('urllib.quote_plus ("' . @+ . '")')
 		let @+ = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @+)
-	catch /^Vim\%((\a\+)\)\=:E887/
+	catch /^Vim\%((\a\+)\)\=:E\(887\|319\)/
 		try
 			if has('python3')
 				python3 import urllib.parse
