@@ -1,3 +1,5 @@
+[[ -f ~/.zshrc.grml ]] &&
+	. ~/.zshrc.grml
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored
@@ -195,10 +197,8 @@ fi
 
 # [[ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
 # 	. ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[[ -f ~/.zshrc.grml ]] &&
-	. ~/.zshrc.grml
 [[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] &&
 	. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 [[ -f ~/.conflocal/$CONFLOCAL/.zshrc ]] &&
 	. ~/.conflocal/$CONFLOCAL/.zshrc
-bindkey -v
+fpath=(~/.zsh/completion $fpath)
