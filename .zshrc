@@ -195,7 +195,7 @@ then
 	}
 fi
 
-up () {
+vup () {
 	vim -c PlugUpgrade -c PlugUpdate -c qa
 	git submodule update --remote
 }
