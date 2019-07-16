@@ -200,6 +200,14 @@ vup () {
 	git submodule update --remote
 }
 
+if command -v apt &> /dev/null
+then
+	alias up='sudo apt update; sudo apt full-upgrade --autoremove --purge -y'
+elif command -v apt-get &> /dev/null
+then
+	alias up='sudo apt-get update; sudo apt-get dist-upgrade --autoremove --purge -y'
+fi
+
 [[ -f ~/.zsh/iterm.zsh ]] && [[ $TERM_PROGRAM = iTerm.app ]]
 	. ~/.zsh/iterm.zsh
 [[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] &&
