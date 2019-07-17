@@ -148,6 +148,17 @@ ssht () {
 	ssh -Xt "$@" '$SHELL -lic byobu'
 }
 
+bh () {
+	for i in "$@"
+	do
+		bash -c "help $i"
+	done
+}
+
+dux () {
+	sudo du -hx --max-depth 1 "$@" | sort -h
+}
+
 # pip zsh completion start
 function _pip_completion {
 	local words cword
