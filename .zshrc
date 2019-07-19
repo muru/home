@@ -1,5 +1,5 @@
-[[ -f ~/.zsh/zshrc.grml ]] &&
-	. ~/.zsh/zshrc.grml
+[[ -f ~/.zsh/.zshrc.grml ]] &&
+	. ~/.zsh/.zshrc.grml
 # Arch's default root .zshrc
 # ##########################
 # Filename:      /etc/skel/.zshrc
@@ -546,8 +546,6 @@ then
 	alias up='brew upgrade; brew cleanup'
 fi &> /dev/null
 
-[[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] &&
-	. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 [[ -f ~/.conflocal/$CONFLOCAL/.zshrc ]] &&
 	. ~/.conflocal/$CONFLOCAL/.zshrc
 fpath=(~/.zsh/completion $fpath)
