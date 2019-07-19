@@ -211,16 +211,17 @@ vup () {
 	git submodule update --remote
 }
 
-if command -v apt &> /dev/null
+if command -v apt-get && command -v apt
 then
 	alias up='sudo apt update; sudo apt full-upgrade --autoremove --purge -y'
-elif command -v apt-get &> /dev/null
+elif command -v apt-get
 then
 	alias up='sudo apt-get update; sudo apt-get dist-upgrade --autoremove --purge -y'
-fi
+elif command -v brew
+then
+	alias up='brew upgrade; brew cleanup'
+fi &> /dev/null
 
-[[ -f ~/.zsh/iterm.zsh ]] && [[ $TERM_PROGRAM = iTerm.app ]]
-	. ~/.zsh/iterm.zsh
 [[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] &&
 	. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 [[ -f ~/.conflocal/$CONFLOCAL/.zshrc ]] &&

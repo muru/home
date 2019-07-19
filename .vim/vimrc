@@ -164,6 +164,9 @@ endif
 if executable('logrotate')
 	Plug 'moon-musick/vim-logrotate'
 endif
+if executable('terraform')
+	Plug 'hashivim/vim-terraform'
+endif
 call plug#end()
 
 function! EnableYCM()

@@ -12,3 +12,6 @@ export MANPATH
 
 export BYOBU_PREFIX=/usr/local
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+[[ -f ~/.zsh/iterm.zsh ]] && [[ $TERM_PROGRAM = iTerm.app ]]
+	. ~/.zsh/iterm.zsh
