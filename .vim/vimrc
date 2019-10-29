@@ -106,7 +106,7 @@ nnoremap   <Down>      gj
 nnoremap   <Up>        gk
 
 function! YCMInstallCmd()
-	let l:ycm_cmd = 'python2 ./install.py'
+	let l:ycm_cmd = 'python3 ./install.py'
 	if executable('c++')
 		let l:ycm_cmd .= ' --clang-completer'
 	endif
@@ -125,19 +125,19 @@ call plug#begin()
 "Plug 'vim-scripts/diffchar.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'tomasr/molokai'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
-Plug 'majutsushi/tagbar', {'for': ['cpp', 'c', 'go', 'sh', 'javascript']}
-Plug 'godlygeek/tabular'
-Plug 'dhruvasagar/vim-table-mode'
+"Plug 'majutsushi/tagbar', {'for': ['cpp', 'c', 'go', 'sh', 'javascript']}
+"Plug 'godlygeek/tabular'
+"Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-liquid', {'for': ['html', 'markdown']}
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'tpope/vim-obsession'
+"Plug 'tpope/vim-obsession'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 
 if executable('cmake')
@@ -147,8 +147,8 @@ if executable('cmake')
 endif
 if executable('go')
 	Plug 'fatih/vim-go', {'for': 'go'}
-	Plug 'Shougo/neocomplete.vim', {'for': 'go'}
-	Plug 'Shougo/echodoc.vim'
+	"Plug 'Shougo/neocomplete.vim', {'for': 'go'}
+	"Plug 'Shougo/echodoc.vim'
 endif
 if executable('latex')
 	Plug 'lervag/vimtex', {'for': 'tex'}
@@ -191,11 +191,10 @@ autocmd BufWritePost *.sh,*.py if get(b:, 'is_new', 0) | silent execute '!chmod 
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
-set omnifunc=syntaxcomplete#Complete
 set foldmethod=indent
 set foldlevel=10
-let g:syntastic_cpp_compiler_options = ' -std=c++14'
-let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_cpp_compiler_options = ' -std=c++17 '
+let g:syntastic_python_python_exec = exepath('python3')
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = ['--ignore', 'E501']
 let g:syntastic_check_on_open = 0
@@ -216,7 +215,7 @@ let g:DiffUpdate = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_python_binary_path = g:syntastic_python_python_exec
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1

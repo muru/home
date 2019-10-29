@@ -147,6 +147,7 @@ alias help=run-help
 ssht () {
 	ssh -Xt "$@" '$SHELL -lic byobu'
 }
+compdef _ssh_hosts ssht
 
 bh () {
 	for i in "$@"
@@ -227,3 +228,4 @@ fi &> /dev/null
 [[ -f ~/.conflocal/$CONFLOCAL/.zshrc ]] &&
 	. ~/.conflocal/$CONFLOCAL/.zshrc
 fpath=(~/.zsh/completion $fpath)
+compinit
