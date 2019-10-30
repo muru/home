@@ -65,16 +65,16 @@ fi
 autoload -U promptinit
 promptinit
 
-[[ -d $HOME/.cache/zsh ]] || mkdir -p "$HOME/.cache/zsh"
-DIRSTACKFILE="$HOME/.cache/zsh/dirs"
-
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-	dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-	[[ -z $ITERM_PROFILE ]] && [[ -d $dirstack[1] ]] && cd $dirstack[1]
-fi
-chpwd() {
-	print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
-}
+# [[ -d $HOME/.cache/zsh ]] || mkdir -p "$HOME/.cache/zsh"
+# DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+# 
+# if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+# 	dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+# 	[[ -z $ITERM_PROFILE ]] && [[ -d $dirstack[1] ]] && cd $dirstack[1]
+# fi
+# chpwd() {
+# 	print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+# }
 
 DIRSTACKSIZE=20
 
