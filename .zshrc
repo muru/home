@@ -67,7 +67,7 @@ promptinit
 
 # [[ -d $HOME/.cache/zsh ]] || mkdir -p "$HOME/.cache/zsh"
 # DIRSTACKFILE="$HOME/.cache/zsh/dirs"
-# 
+#
 # if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
 # 	dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
 # 	[[ -z $ITERM_PROFILE ]] && [[ -d $dirstack[1] ]] && cd $dirstack[1]
@@ -150,10 +150,7 @@ ssht () {
 compdef _ssh_hosts ssht
 
 bh () {
-	for i in "$@"
-	do
-		bash -c "help $i"
-	done
+	bash -c 'for i; do help $i | less -X; done' bash_help "$@"
 }
 
 dux () {
@@ -207,10 +204,11 @@ then
 	}
 fi
 
-vup () {
+vup () (
+	cd
 	vim -c PlugUpgrade -c PlugUpdate -c qa
 	git submodule update --remote
-}
+)
 
 if command -v apt-get && command -v apt
 then
