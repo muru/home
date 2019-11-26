@@ -3,7 +3,6 @@ set ruler
 set number
 "set bg=dark
 
-set incsearch
 " This shows what you are typing as a command.  I love this!
 set showcmd
 " Who doesn't like autoindent?
@@ -88,22 +87,27 @@ endfunction
 
 command! -nargs=? -complete=help H call s:Help2Url (<f-args>)
 
-noremap    ;           :
-noremap    ,           ;
-nnoremap   <           :tabp<CR>
-nnoremap   >           :tabn<CR>
-noremap    <leader>,   :bp<CR>
-noremap    <leader>.   :bn<CR>
-command!   C           let @/=""
-cnoremap   w!!         w !sudo tee >/dev/null %
-noremap    <leader>P   "*p
-noremap    <leader>p   "+p
-noremap    <leader>Y   "*y
-noremap    <leader>y   "+y
-inoremap   <Down>      <C-o>gj
-inoremap   <Up>        <C-o>gk
-nnoremap   <Down>      gj
-nnoremap   <Up>        gk
+noremap   ;                :
+noremap   ,                ;
+nnoremap  <                :tabp<CR>
+nnoremap  >                :tabn<CR>
+nnoremap  <leader><Up>     <C-w>k
+nnoremap  <leader><Down>   <C-w>j
+nnoremap  <leader><Left>   <C-w>h
+nnoremap  <leader><Right>  <C-w>l
+nnoremap  >                :tabn<CR>
+noremap   <leader>,        :bp<CR>
+noremap   <leader>.        :bn<CR>
+command!  C                let @/=""
+cnoremap  w!!              w !sudo tee >/dev/null %
+noremap   <leader>P        "*p
+noremap   <leader>p        "+p
+noremap   <leader>Y        "*y
+noremap   <leader>y        "+y
+inoremap  <Down>           <C-o>gj
+inoremap  <Up>             <C-o>gk
+nnoremap  <Down>           gj
+nnoremap  <Up>             gk
 
 function! YCMInstallCmd()
 	let l:ycm_cmd = 'python3 ./install.py'
@@ -170,14 +174,13 @@ if executable('terraform')
 endif
 call plug#end()
 
-function! EnableYCM()
-	call plug#load('YouCompleteMe')
-	call youcompleteme#Enable()
-endfunction
+try
+	colorscheme molokai
+catch /E185/
+	PlugUpdate
+	colorscheme molokai
+endtry
 
-nnoremap <leader>ycm :call EnableYCM()<cr>
-
-colorscheme molokai
 highlight Normal  ctermbg=none
 highlight NonText ctermbg=none
 highlight Visual  ctermbg=DarkGrey
