@@ -1,3 +1,4 @@
+ansible
 bash
 byobu
 coreutils
@@ -13,7 +14,6 @@ go
 grep
 htop
 jq
-jupyter
 lua
 make
 node
