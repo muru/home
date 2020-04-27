@@ -101,11 +101,11 @@ alias wg='wget --continue'
 autoload -U colors && colors
 if [[ -n $SSH_TTY ]]
 then
-	PROMPT="%{$fg[green]%}%B%n%{$reset_color%}@%{$fg_bold[blue]%}%m%{$fg[white]%}|%{$fg_bold[yellow]%}[%?] %{$fg_bold[cyan]%}%1~%b%{$reset_color%}%\$ %{$fg_bold[yellow]%}"
+	PROMPT="%F{green}%B%n%f@%F{blue}%m%F{white}|%F{yellow}[%?] %F{cyan}%1~%b%f%\$ "
 else
-	PROMPT="%{$fg[green]%}%B%n%{$reset_color%}%{$fg[white]%}|%{$fg_bold[yellow]%}[%?] %{$fg_bold[cyan]%}%1~%b%{$reset_color%}%\$ %{$fg_bold[yellow]%}"
+	PROMPT="%F{green}%B%n%f%F{white}|%F{yellow}[%?] %F{cyan}%1~%b%f%\$ "
 fi
-RPROMPT="%{$reset_color%}"
+RPROMPT="%f"
 
 case $TERM in
 	xterm*|screen*)
