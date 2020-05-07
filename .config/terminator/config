@@ -1,0 +1,66 @@
+[global_config]
+  focus = mouse
+  window_state = hidden
+  borderless = True
+  scroll_tabbar = True
+  homogeneous_tabbar = False
+  hide_from_taskbar = True
+  always_on_top = True
+  sticky = True
+  enabled_plugins = ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  title_use_system_font = False
+  title_font = Ubuntu Mono derivative Powerline 12
+[keybindings]
+  go_left = <Ctrl><Shift>Left
+  go_right = <Ctrl><Shift>Right
+  next_tab = <Alt>Right
+  prev_tab = <Alt>Left
+  hide_window = Pause
+[profiles]
+  [[default]]
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#00dddd"
+    font = Ubuntu Mono derivative Powerline 12
+    foreground_color = "#ffffff"
+    scrollback_infinite = True
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    use_system_font = False
+  [[lab]]
+    cursor_color = "#aaaaaa"
+  [[root]]
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#00dddd"
+    font = Ubuntu Mono derivative Powerline 12
+    foreground_color = "#00dddd"
+    scrollback_infinite = True
+    exit_action = restart
+    palette = "#000000:#cd0000:#00cd00:#cdcd00:#1e90ff:#cd00cd:#00cdcd:#e5e5e5:#4c4c4c:#ff0000:#00ff00:#ffff00:#4682b4:#ff00ff:#00ffff:#ffffff"
+    use_custom_command = True
+    custom_command = sudo -i
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[child0]]]
+      order = 0
+      parent = ""
+      position = 0:-20
+      size = 1920, 478
+      type = Window
+    [[[child1]]]
+      labels = Root, None
+      order = 0
+      parent = child0
+      type = Notebook
+    [[[terminal1]]]
+      order = 0
+      parent = child1
+      profile = root
+      type = Terminal
+    [[[terminal2]]]
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+[plugins]
