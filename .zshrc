@@ -140,6 +140,7 @@ bindkey '^[[1;5C' forward-word
 
 # Help from Arch
 
+(( $+aliases[run-help] )) && unalias
 autoload -U run-help
 autoload run-help-git
 alias help=run-help
@@ -210,7 +211,10 @@ vup () (
 	git submodule update --remote
 )
 
-if command -v apt-get && command -v apt
+if command -v pacman
+then
+	alias up='pacman -Syu'
+elif command -v apt-get && command -v apt
 then
 	alias up='sudo apt update; sudo apt full-upgrade --autoremove --purge -y'
 elif command -v apt-get
@@ -226,4 +230,3 @@ fi &> /dev/null
 [[ -f ~/.conflocal/$CONFLOCAL/.zshrc ]] &&
 	. ~/.conflocal/$CONFLOCAL/.zshrc
 fpath=(~/.zsh/completion $fpath)
-compinit

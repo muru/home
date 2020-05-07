@@ -13,7 +13,7 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 syntax enable
-set grepprg=grep\ -nRH
+set grepprg=grep\ -nRH\ -m1\ --exclude-dir=.git
 
 " Spaces are better than a tab character
 " set expandtab
@@ -73,13 +73,13 @@ function! s:Help2Url (...)
 	try
 		python import urllib
 		let @+ = pyeval ('urllib.quote_plus ("' . @+ . '")')
-		let @+ = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @+)
+		let @+ = printf ('https://vimhelp.org/%s.html?#%s', l:tagfile, @+)
 	catch /^Vim\%((\a\+)\)\=:E\(887\|319\)/
 		try
 			if has('python3')
 				python3 import urllib.parse
 				let @+ = py3eval ('urllib.parse.quote ("' . @+ . '")')
-				let @+ = printf ('http://vimhelp.appspot.com/%s.html#%s', l:tagfile, @+)
+				let @+ = printf ('https://vimhelp.org/%s.html?#%s', l:tagfile, @+)
 			endif
 		endtry
 	endtry
@@ -109,20 +109,6 @@ inoremap  <Up>             <C-o>gk
 nnoremap  <Down>           gj
 nnoremap  <Up>             gk
 
-function! YCMInstallCmd()
-	let l:ycm_cmd = 'python3 ./install.py'
-	if executable('c++')
-		let l:ycm_cmd .= ' --clang-completer'
-	endif
-	if executable('go')
-		let l:ycm_cmd .= ' --gocode-completer'
-	endif
-	if executable('npm')
-		let l:ycm_cmd .= ' --tern-completer'
-	endif
-	return l:ycm_cmd
-endfunction
-
 "execute pathogen#infect()
 call plug#begin()
 " Common plugins
@@ -136,23 +122,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'tomasr/molokai'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
-"Plug 'majutsushi/tagbar', {'for': ['cpp', 'c', 'go', 'sh', 'javascript']}
 "Plug 'godlygeek/tabular'
-"Plug 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-liquid', {'for': ['html', 'markdown']}
 Plug 'Vimjas/vim-python-pep8-indent'
-"Plug 'tpope/vim-obsession'
-Plug 'martinda/Jenkinsfile-vim-syntax'
 
-if executable('cmake')
-	" YCM command lifted from vim-plug readme
-	Plug 'Valloric/YouCompleteMe', { 'do': YCMInstallCmd(), 'for': ['cpp', 'c', 'sh', 'javascript', 'vim', 'tex', 'go', 'python'] }
-	autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
-endif
 if executable('go')
 	Plug 'fatih/vim-go', {'for': 'go'}
-	"Plug 'Shougo/neocomplete.vim', {'for': 'go'}
-	"Plug 'Shougo/echodoc.vim'
 endif
 if executable('latex')
 	Plug 'lervag/vimtex', {'for': 'tex'}
@@ -161,7 +137,7 @@ if executable('ghc')
 	Plug 'dag/vim2hs', {'for': 'hs'}
 endif
 if executable('man')
-	Plug 'murukeshm/vim-manpager'
+	Plug 'muru/vim-manpager'
 endif
 if executable('dpkg')
 	Plug 'vim-scripts/deb.vim'
@@ -209,21 +185,12 @@ let g:ctrlp_prompt_mappings = {
 			\ }
 let g:ctrlp_max_depth = 40
 let g:ctrlp_max_files = 10000
-let g:ctrlp_custom_ignore = {
-			\ 'dir': '\v[\/](plugged|undo|view|\.git|_site)$'
-			\ }
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:DiffColors = 100
 let g:DiffUnit = "Word3"
 let g:DiffUpdate = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_python_binary_path = g:syntastic_python_python_exec
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:terraform_align = 1
+let g:terraform_fmt_on_save = 1
 
 if empty($MAN_PN) && @% == "" && getcwd() == "/tmp"
 	" From http://vi.stackexchange.com/questions/239/
