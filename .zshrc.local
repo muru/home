@@ -139,19 +139,6 @@ export MANWIDTH=80
 
 setopt BRACE_CCL
 
-if [[ $TERM = screen* ]]
-then
-	# If running in screen, set the window title to the command about to be executed
-	preexec() {
-		[ -n "$WINDOW" ] && print -Pn "\ek$2\e\\"
-	}
-
-	# If in screen, blank the window title when displaying the prompt
-	precmd() {
-		[ -n "$WINDOW" ] && print -Pn "\ek-\e\\"
-	}
-fi
-
 vup () (
 	cd
 	vim -c PlugUpgrade -c PlugUpdate -c qa
@@ -171,6 +158,8 @@ elif check_com -c brew
 then
 	alias up='brew upgrade; brew cleanup'
 fi
+
+zstyle ':prompt:grml:*:items:user' pre '%F{45}'
 
 [[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] &&
 	. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
