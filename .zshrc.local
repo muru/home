@@ -89,6 +89,10 @@ bindkey -M viins '^F' history-incremental-search-forward
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # Help from Arch
 
 (( $+aliases[run-help] )) && unalias run-help
@@ -163,6 +167,8 @@ zstyle ':prompt:grml:*:items:user' pre '%F{45}'
 
 [[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] &&
 	. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+[[ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
+	. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [[ -f ~/.conflocal/$CONFLOCAL/.zshrc ]] &&
 	. ~/.conflocal/$CONFLOCAL/.zshrc
 fpath=(~/.zsh/completion $fpath)
