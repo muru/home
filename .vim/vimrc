@@ -109,7 +109,6 @@ inoremap  <Up>             <C-o>gk
 nnoremap  <Down>           gj
 nnoremap  <Up>             gk
 
-"execute pathogen#infect()
 call plug#begin()
 " Common plugins
 "Plug 'vim-scripts/diffchar.vim'
@@ -122,10 +121,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'tomasr/molokai'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabrielelana/vim-markdown', {'for': 'markdown'}
-"Plug 'godlygeek/tabular'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'tpope/vim-liquid', {'for': ['html', 'markdown']}
 Plug 'Vimjas/vim-python-pep8-indent'
+
+Plug 'dense-analysis/ale'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
 if executable('go')
 	Plug 'fatih/vim-go', {'for': 'go'}
@@ -174,7 +177,7 @@ set foldmethod=indent
 set foldlevel=10
 let g:syntastic_cpp_compiler_options = ' -std=c++17 '
 let g:syntastic_python_python_exec = exepath('python3')
-let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_checkers = ['flake8', 'pylint']
 let g:syntastic_python_flake8_args = ['--ignore', 'E501']
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
@@ -234,3 +237,4 @@ endif
 set complete+=k
 
 runtime local/$CONFLOCAL.vim
+let g:is_posix = 1

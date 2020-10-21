@@ -91,7 +91,7 @@ bindkey '^[[1;5C' forward-word
 
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+bindkey -M vicmd e edit-command-line
 
 # Help from Arch
 
@@ -138,7 +138,7 @@ then
 fi
 export TERM
 export CDPATH="$CDPATH:$HOME"
-export MANPAGER='vim --not-a-term -'
+export MANPAGER='vim --not-a-term +MANPAGER -'
 export MANWIDTH=80
 
 setopt BRACE_CCL
@@ -146,7 +146,7 @@ setopt BRACE_CCL
 vup () (
 	cd
 	vim -c PlugUpgrade -c PlugUpdate -c qa
-	git submodule update --remote
+	git submodule update --remote --init
 )
 
 if check_com -c pacman

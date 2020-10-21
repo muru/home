@@ -116,3 +116,7 @@ DGX
 playbook
 backend
 frontend
+AWS
+IAM
+Zappa
+Mullasseril
