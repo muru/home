@@ -47,8 +47,8 @@ klog () (
 	set -e
 	name=$1
 	shift
-	pod=$(kubectl get -n "${K8S_NAMESPACE?}" pods -l "name == $name" --field-selector status.phase=Running -o name)
-	kubectl -n "${K8S_NAMESPACE?}" logs "${pod?}" "$@"
+	pod=$(kubectl get -n "${K8S_NAMESPACE:?}" pods -l "name == $name" --field-selector status.phase=Running -o name)
+	kubectl -n "${K8S_NAMESPACE:?}" logs "${pod:?}" "$@"
 )
 
 alias top=htop
