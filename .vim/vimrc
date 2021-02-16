@@ -129,6 +129,7 @@ Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'leafOfTree/vim-vue-plugin'
 
 if executable('go')
 	Plug 'fatih/vim-go', {'for': 'go'}
@@ -234,4 +235,3 @@ endif
 set complete+=k
 
 runtime local/$CONFLOCAL.vim
-let g:is_posix = 1
