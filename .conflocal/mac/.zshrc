@@ -16,7 +16,7 @@ fpath=($BREW_PREFIX/share/zsh-completions $fpath)
 [[ -f ~/.zsh/iterm.zsh ]] && [[ $TERM_PROGRAM = iTerm.app ]] &&
 	. ~/.zsh/iterm.zsh
 
-
+export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
 for f in "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 do
 	[[ -f $f ]] && source $f
@@ -44,8 +44,11 @@ precmd () {
 }
 
 klog () (
+	set -e
 	name=$1
 	shift
-	pod=$(kubectl get -n "${K8S_NAMESPACE?}" pods -l "name == $name" --no-headers -o custom-columns=:.metadata.name,:.status.phase | awk '/Running/{print $1; quit}')
-	kubectl -n "${K8S_NAMESPACE?}" logs ${pod?} "$@"
+	pod=$(kubectl get -n "${K8S_NAMESPACE?}" pods -l "name == $name" --field-selector status.phase=Running -o name)
+	kubectl -n "${K8S_NAMESPACE?}" logs "${pod?}" "$@"
 )
+
+alias top=htop
