@@ -1,6 +1,6 @@
 ansible
+awscli
 bash
-busybox
 byobu
 coreutils
 curl
@@ -12,11 +12,11 @@ gcc
 ghostscript
 gnu-sed
 go
+gpg
 grep
 htop
 imagemagick
 jq
-lua
 make
 moreutils
 node
@@ -27,6 +27,7 @@ python
 rename
 rsync
 ruby
+tfenv
 tmux
 tree
 vim
