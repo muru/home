@@ -23,32 +23,35 @@ do
 done
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C $BREW_PREFIX/bin/kustomize kustomize
 
 unset 'FAST_HIGHLIGHT[chroma-man]'
 
-declare -A contexts
-while read context
-do
-	case $context in
-		*aws*stg*) contexts[stgaws]=$context ;;
-		*gke*stg*) contexts[stggke]=$context ;;
-		*aws*prod*) contexts[stgprod]=$context ;;
-		*gke*sunlit*) contexts[stggke]=$context ;;
-		*gke*dev*) contexts[dev]=$context ;;
-	esac
-done < <(kubectl config get-contexts -o name)
+if command -v kubectl > /dev/null
+then
+	complete -o nospace -C $BREW_PREFIX/bin/kustomize kustomize
+	declare -A contexts
+	while read context
+	do
+		case $context in
+			*aws*stg*) contexts[stgaws]=$context ;;
+			*gke*stg*) contexts[stggke]=$context ;;
+			*aws*prod*) contexts[stgprod]=$context ;;
+			*gke*sunlit*) contexts[stggke]=$context ;;
+			*gke*dev*) contexts[dev]=$context ;;
+		esac
+	done < <(kubectl config get-contexts -o name)
 
-precmd () {
-	print -Pl "%F{magenta}[%B$(kubectl config current-context)%b%F{magenta}${K8S_NAMESPACE+%F{blue\}|%F{green\}$K8S_NAMESPACE}%F{magenta}]%f"
-}
+	precmd () {
+		print -Pl "%F{magenta}[%B$(kubectl config current-context)%b%F{magenta}${K8S_NAMESPACE+%F{blue\}|%F{green\}$K8S_NAMESPACE}%F{magenta}]%f"
+	}
 
-klog () (
-	set -e
-	name=$1
-	shift
-	pod=$(kubectl get -n "${K8S_NAMESPACE:?}" pods -l "name == $name" --field-selector status.phase=Running -o name)
-	kubectl -n "${K8S_NAMESPACE:?}" logs "${pod:?}" "$@"
-)
+	klog () (
+		set -e
+		name=$1
+		shift
+		pod=$(kubectl get -n "${K8S_NAMESPACE:?}" pods -l "name == $name" --field-selector status.phase=Running -o name)
+		kubectl -n "${K8S_NAMESPACE:?}" logs "${pod:?}" "$@"
+	)
+fi
 
 alias top=htop
