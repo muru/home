@@ -101,7 +101,7 @@ autoload run-help-git
 alias help=run-help
 
 ssht () {
-	ssh -Xt "$@" '$SHELL -lic byobu'
+	ssh -t "$@" '$SHELL -lic byobu'
 }
 compdef _ssh_hosts ssht
 
