@@ -137,7 +137,7 @@ then
 	esac
 fi
 export TERM
-export CDPATH="$CDPATH:$HOME"
+export CDPATH="$CDPATH:$HOME:$HOME/dev"
 export MANPAGER='vim --not-a-term +MANPAGER -'
 export MANWIDTH=80
 
