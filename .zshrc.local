@@ -165,10 +165,15 @@ fi
 
 zstyle ':prompt:grml:*:items:user' pre '%F{45}'
 
-[[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]] &&
-	. ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-[[ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
-	. ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-[[ -f ~/.conflocal/$CONFLOCAL/.zshrc ]] &&
-	. ~/.conflocal/$CONFLOCAL/.zshrc
+files=(
+	# /etc/profile.d/vte.sh
+	~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+	~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+	~/.conflocal/$CONFLOCAL/.zshrc
+)
+
+for f in $files ; do
+	[[ -f $f ]] &&
+		. $f
+done
 fpath=(~/.zsh/completion $fpath)

@@ -112,7 +112,7 @@ nnoremap  <Up>             gk
 call plug#begin()
 " Common plugins
 "Plug 'vim-scripts/diffchar.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'ervandew/supertab'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-surround'
@@ -145,7 +145,6 @@ if executable('logrotate')
 endif
 if executable('terraform')
 	Plug 'hashivim/vim-terraform'
-	Plug 'hashicorp/sentinel.vim'
 endif
 call plug#end()
 

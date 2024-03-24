@@ -8,8 +8,6 @@
   always_on_top = True
   sticky = True
   enabled_plugins = ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
-  title_use_system_font = False
-  title_font = Ubuntu Mono derivative Powerline 12
 [keybindings]
   go_left = <Ctrl><Shift>Left
   go_right = <Ctrl><Shift>Right
@@ -20,19 +18,16 @@
   [[default]]
     background_darkness = 0.9
     background_type = transparent
-    cursor_color = "#00dddd"
-    font = Ubuntu Mono derivative Powerline 12
+    font = Ubuntu Mono derivative Powerline 15
     foreground_color = "#ffffff"
     scrollback_infinite = True
     palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
     use_system_font = False
   [[lab]]
-    cursor_color = "#aaaaaa"
   [[root]]
     background_darkness = 0.9
     background_type = transparent
-    cursor_color = "#00dddd"
-    font = Ubuntu Mono derivative Powerline 12
+    font = Ubuntu Mono derivative Powerline 15
     foreground_color = "#00dddd"
     scrollback_infinite = True
     exit_action = restart
@@ -46,7 +41,7 @@
       order = 0
       parent = ""
       position = 0:-20
-      size = 1920, 478
+      size = 2560, 600
       type = Window
     [[[child1]]]
       labels = Root, None

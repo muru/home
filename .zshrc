@@ -1,3 +1,7 @@
+if [[ -n $GRML_OSTYPE ]] ; then
+    # Skip if /etc/zsh/zshrc is already a grml zshrc
+    return 0
+fi
 # Filename:      /etc/zsh/zshrc
 # Purpose:       config file for zsh (z shell)
 # Authors:       grml-team (grml.org), (c) Michael Prokop <mika@grml.org>
