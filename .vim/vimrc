@@ -136,6 +136,7 @@ if executable('ghc')
 endif
 if executable('man')
 	Plug 'muru/vim-manpager'
+	Plug 'vim-scripts/AnsiEsc.vim'
 endif
 if executable('dpkg')
 	Plug 'vim-scripts/deb.vim'

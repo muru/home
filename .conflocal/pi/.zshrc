@@ -6,3 +6,8 @@ alias pacl='yay -Ql'
 
 [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]] &&
 	source /usr/share/doc/pkgfile/command-not-found.zsh
+
+if [[ ! $DISPLAY && $XDG_VTNR -eq 2 ]]; then
+	sleep 10
+	exec startx
+fi
