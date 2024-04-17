@@ -167,7 +167,7 @@ zstyle ':prompt:grml:*:items:user' pre '%F{45}'
 
 files=(
 	# /etc/profile.d/vte.sh
-	~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+	~/.zsh/f-sy-h/F-Sy-H.plugin.zsh
 	~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 	~/.conflocal/$CONFLOCAL/.zshrc
 )

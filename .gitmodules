@@ -1,0 +1,6 @@
+[submodule ".zsh/f-sy-h"]
+	path = .zsh/f-sy-h
+	url = https://github.com/z-shell/F-Sy-H
+[submodule ".zsh/zsh-autosuggestions"]
+	path = .zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
